@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">AksiHijau</string>
+
+    <!--  Splash Screen  -->
     <string name="nama_app_ss">Aksi Hijau</string>
     <string name="nama_kelompok">Create by C23-PS329</string>
+
+    <!--  OnBoarding  -->
+    <string name="title_menu_1">Selamat datang, Pahlawan Hijau </string>
+    <string name="title_menu_2">Ciptakan Pohon</string>
+    <string name="title_menu_3">Pantau Pohon</string>
+    <string name="title_menu_4">Saran Pohon</string>
+    <string name="desc_menu_1">Jadilah pahlawan hijau dengan Aksi Hijau</string>
+    <string name="desc_menu_2">Berkontribusilah dalam pelestarian lingkungan melalui fitur Donasi Pohon kami. Bersama-sama, kita dapat mengurangi jejak karbon, memperbaiki ekosistem, dan menjaga keindahan alam kita.</string>
+    <string name="desc_menu_3">Kami percaya pada transparansi dan ingin Anda melihat dampak langsung dari kontribusi Anda. Dapatkan pembaruan tentang proyek yang sedang berlangsung dan saksikan bagaimana setiap langkah yang Anda ambil memberikan perubahan positif bagi dunia kita.</string>
+    <string name="desc_menu_4">Kami ingin membantu Anda dalam memilih spesies pohon yang tepat untuk ditanam di area Anda. Fitur Rekomendasi Pohon kami memberikan saran berdasarkan kondisi lingkungan dan kebutuhan spesifik. </string>
+    <string name="donation_now">Saatnya jadi pahlawan</string>
+
 </resources>
