@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_on_boarding_scene"
-    tools:context=".view.OnBoarding"
+    tools:context=".ui.view.OnBoarding"
     tools:ignore="ExtraText">
 
 
@@ -231,7 +231,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:alpha="0"
-        android:textSize="20sp"
         android:fontFamily="@font/plusjakartasans_bold"
         android:backgroundTint="@color/green_750"
         android:text="@string/donation_now"
