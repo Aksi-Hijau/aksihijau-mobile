@@ -27,4 +27,9 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="belum_punya_akun">Belum Punya Akun?</string>
     <string name="image_content_desc">icon</string>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_campaign">Kampanye</string>
+    <string name="title_history">Riwayat</string>
+    <string name="title_profile">Profil</string>
 </resources>

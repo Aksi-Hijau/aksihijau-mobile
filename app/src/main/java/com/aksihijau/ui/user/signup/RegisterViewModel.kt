@@ -1,4 +1,4 @@
-package com.aksihijau.ui.signup
+package com.aksihijau.ui.user.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

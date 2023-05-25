@@ -1,4 +1,4 @@
-package com.aksihijau.ui.signup
+package com.aksihijau.ui.user.signup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.databinding.ActivityRegisterBinding
-import com.aksihijau.ui.login.LoginActivity
+import com.aksihijau.ui.user.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -32,6 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         registerViewModel.isSukses.observe(this) {
             if(it){
                 Toast.makeText(this, "Register Sukses", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }else {
                 Toast.makeText(this, "Register Gagal", Toast.LENGTH_SHORT).show()

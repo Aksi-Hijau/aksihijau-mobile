@@ -1,4 +1,4 @@
-package com.aksihijau.ui.login
+package com.aksihijau.ui.user.login
 
 import android.content.Context
 import android.content.Intent
@@ -14,8 +14,8 @@ import com.aksihijau.databinding.ActivityLoginBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
 import com.aksihijau.datastore.TokenViewModelFactory
-import com.aksihijau.ui.home.HomeActivity
-import com.aksihijau.ui.signup.RegisterActivity
+import com.aksihijau.ui.navigationmenu.BottomNavigationActivity
+import com.aksihijau.ui.user.signup.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
             if(it){
                 tokenViewModel.saveLoginSetting(true)
                 Toast.makeText(this, "Login Sukses", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, BottomNavigationActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 finish()

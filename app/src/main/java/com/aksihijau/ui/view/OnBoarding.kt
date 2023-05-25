@@ -12,8 +12,8 @@ import com.aksihijau.databinding.ActivityOnBoardingBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
 import com.aksihijau.datastore.TokenViewModelFactory
-import com.aksihijau.ui.home.HomeActivity
-import com.aksihijau.ui.login.LoginActivity
+import com.aksihijau.ui.navigationmenu.BottomNavigationActivity
+import com.aksihijau.ui.user.login.LoginActivity
 
 class OnBoarding : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoardingBinding
@@ -33,7 +33,7 @@ class OnBoarding : AppCompatActivity() {
 
         tokenViewModel.getLoginSettings().observe(this){
             if(it){
-                startActivity(Intent(this, HomeActivity::class.java))
+                startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()
             }
         }
