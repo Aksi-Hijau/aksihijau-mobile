@@ -32,4 +32,28 @@
     <string name="title_campaign">Kampanye</string>
     <string name="title_history">Riwayat</string>
     <string name="title_profile">Profil</string>
+
+    <!--  Fragment Home  -->
+    <string name="title_greatings">Selamat datang, Pahlawan Hijau</string>
+    <string name="desc_greatings">Donasimu akan membantu bumi kita menjadi lebih baik</string>
+    <string name="title_donasi_home">Selamatkan Alam Sekarang</string>
+    <string name="title_artikel_home">Berita Alam Terkini</string>
+    <string name="next_donasi">Selengkapnya...</string>
+
+
+    <!-- List Donation-->
+    <string name="title_donation">Gerakan Penanaman 100 Pohon</string>
+    <string name="Target_donation">Target</string>
+    <string name="donation_collect">Rp 1.000.000</string>
+    <string name="Duration">Sisa Hari</string>
+    <string name="duration_now">45 Hari</string>
+    <string name="search_donation">Cari Donasi</string>
+
+    <!--  Campaign Detail  -->
+    <string name="donation_total">Terkumpul dari Rp 6.000.000</string>
+    <string name="title_company">Pengalang dana</string>
+    <string name="dummy_company">Aksi Hijau</string>
+    <string name="title_desc">Deskripsi</string>
+    <string name="desc"></string>
+
 </resources>

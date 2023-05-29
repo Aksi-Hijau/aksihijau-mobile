@@ -6,17 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".ui.navigationmenu.home.HomeFragment">
 
+    <FrameLayout
+        android:id="@+id/header_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/top_bar_home"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
+            android:text="@string/title_greatings"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/desc_greatings"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
+
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/title_donasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/title_donasi_home"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/header_home"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_donasi"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_margin="10dp"
+        tools:listitem="@layout/list_donation"
+        app:layout_constraintTop_toBottomOf="@id/title_donasi"/>
+
+    <TextView
+        android:id="@+id/nav_donasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next_donasi"
+        android:layout_marginEnd="30dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/green_750"
+        android:textAlignment="textEnd"
+        app:layout_constraintTop_toBottomOf="@+id/rv_donasi"/>
+
+    <TextView
+        android:id="@+id/title_artikel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_artikel_home"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/nav_donasi"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
