@@ -115,131 +115,146 @@
             android:layout_marginStart="50dp"/>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/title_desc"
+    <ScrollView
+        android:id="@+id/CL_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/RL_company"
-        android:text="@string/title_desc"
-        android:layout_margin="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        app:layout_constraintTop_toBottomOf="@id/RL_company">
 
-    <TextView
-        android:id="@+id/desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/desc"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_desc" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/next_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/desc"
-        android:text="@string/next_donasi"
-        android:textAlignment="textEnd"
-        android:layout_margin="10dp"
-        android:textColor="@color/green_750"/>
+                <TextView
+                    android:id="@+id/title_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_desc"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/jenis_soil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/next_desc"
-        android:text="@string/title_soil"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/desc"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_desc" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_soil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/jenis_soil"
-        android:padding="5dp">
+                <TextView
+                    android:id="@+id/next_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/desc"
+                    android:text="@string/next_donasi"
+                    android:textAlignment="textEnd"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/green_750"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_soil"
-            android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/jenis_soil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/next_desc"
+                    android:text="@string/title_soil"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/jenis_tanah"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/soil"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_soil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/jenis_soil"
+                    android:padding="5dp">
 
-    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/logo_soil"
+                        android:layout_margin="10dp"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_newsletter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cv_soil"
-        android:padding="5dp"
-        android:layout_marginTop="5dp">
+                    <TextView
+                        android:id="@+id/jenis_tanah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/soil"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="20dp"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newsletter"
-            android:layout_margin="20dp"
-            android:textStyle="bold"/>
+                </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_newsletter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cv_soil"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_donatur"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cv_newsletter"
-        android:padding="5dp"
-        android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/newsletter"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/donatur"
-            android:layout_margin="20dp"
-            android:textStyle="bold"/>
+                </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cv_donatur_detail"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
-            tools:listitem="@layout/list_donatur" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_donatur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cv_newsletter"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp">
 
-        <TextView
-            android:id="@+id/next_donatur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/next_donasi"
-            android:textAlignment="textEnd"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="20dp"
-            android:textColor="@color/green_750"
-            android:layout_marginTop="250dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/donatur"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
 
-    </androidx.cardview.widget.CardView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/cv_donatur_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="20dp"
+                        tools:listitem="@layout/list_donatur" />
+
+                    <TextView
+                        android:id="@+id/next_donatur"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/next_donasi"
+                        android:textAlignment="textEnd"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/green_750"
+                        android:layout_marginTop="250dp"/>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
     <Button
         android:id="@+id/btn_donasi_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cv_donatur"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="10dp"
         android:text="@string/text_btn_donasi"
         android:textSize="20dp"

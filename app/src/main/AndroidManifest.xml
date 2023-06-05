@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AksiHijau"
         tools:targetApi="31">
         <activity
+            android:name=".ui.fiturcampaign.soil.SoilActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.fiturcampaign.donatur.DonaturListActivity"
             android:exported="false" />
         <activity

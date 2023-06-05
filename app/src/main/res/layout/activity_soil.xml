@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fiturcampaign.soil.SoilActivity">
+
+    <RelativeLayout
+        android:id="@+id/Header_soil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="5dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_soil"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/jenis_tanah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/soil"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/body_soil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Header_soil"
+        android:text="@string/soil_body"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

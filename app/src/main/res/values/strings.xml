@@ -60,6 +60,7 @@
     <string name="newsletter">Kabar Terbaru</string>
     <string name="donatur">Donatur Teratas</string>
     <string name="text_btn_donasi">Donasi Sekarang</string>
+    <string name="soil_body">Soil Deskripsi</string>
 
     <!--  Donatur  -->
     <string name="name_donatur">Juan Angela Alma</string>

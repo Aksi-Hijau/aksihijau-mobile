@@ -21,5 +21,9 @@ data class Soil(
     val type: String? = null,
 
     @SerializedName("image")
-    val image: String? = null
+    val image: String? = null,
+
+    @SerializedName("body")
+    val body: String? = null
+
 )

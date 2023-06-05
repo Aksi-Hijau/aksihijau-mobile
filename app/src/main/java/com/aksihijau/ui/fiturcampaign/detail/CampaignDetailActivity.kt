@@ -1,11 +1,14 @@
 package com.aksihijau.ui.fiturcampaign.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.CampaignDetailsData
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
+import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.bumptech.glide.Glide
 
 class CampaignDetailActivity : AppCompatActivity() {
@@ -39,6 +42,18 @@ class CampaignDetailActivity : AppCompatActivity() {
         campaignDetailViewModel.campaignDetails.observe(this, { campaignDetails ->
             updateUI(campaignDetails)
         })
+
+        binding.cvSoil.setOnClickListener {
+            val soilId = campaignDetailViewModel.campaignDetails.value?.soil?.id
+
+            soilId?.let {
+                val intent = Intent(this, SoilActivity::class.java)
+                intent.putExtra("soilId", it)
+                startActivity(intent)
+            }
+        }
+
+
     }
 
     private fun updateUI(campaignDetails: CampaignDetailsData?) {
@@ -55,7 +70,7 @@ class CampaignDetailActivity : AppCompatActivity() {
             binding.donasiCollect.text = data.collected.toString()
             binding.targetDonasi.text = data.target.toString()
             binding.tvDurationDonasi.text= data.remainingDays.toString()
-            binding.desc.text = data.description
+            binding.desc.text = Html.fromHtml(data.description, Html.FROM_HTML_MODE_COMPACT)
             binding.companyName.text = data.fundraiser?.name
             binding.jenisTanah.text = data.soil?.type
 
