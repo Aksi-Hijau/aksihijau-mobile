@@ -1,12 +1,12 @@
-package com.aksihijau.ui.fiturcampaign.detail
+package com.aksihijau.ui.fiturcampaign.donatur
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.aksihijau.R
 
-class campaign_detail : AppCompatActivity() {
+class DonaturListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_campaign_detail)
+        setContentView(R.layout.activity_donation_list)
     }
 }

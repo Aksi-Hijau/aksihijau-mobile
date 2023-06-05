@@ -1,5 +1,9 @@
 package com.aksihijau.api
 
+import com.aksihijau.api.campaignresponse.CampaignDetailsResponse
+import com.aksihijau.api.campaignresponse.CampaignResponse
+import com.aksihijau.api.campaignresponse.DonaturResponse
+import com.aksihijau.api.campaignresponse.SoilsResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -7,7 +11,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -25,6 +31,29 @@ interface ApiService {
                  @Field("password") password: String,
     ): Call<LoginResponse>
 
+    @GET("campaigns")
+    fun getCampaigs() : Call<CampaignResponse>
+
+    @GET("campaigns/{slug}")
+    fun getCampaignDetails(
+        @Path("slug") slug: String
+    ): Call<CampaignDetailsResponse>
+
+    @GET("campaigns/{slug}/donations")
+    fun getDonatur(
+        @Path("slug") slug: String
+    ): Call<DonaturResponse>
+
+    @GET("soils/{id}")
+    fun getSoil(
+        @Path("id") id: Int
+    ): Call<SoilsResponse>
+
+
+
+
+
+
 }
 
 class ApiConfig {
@@ -36,7 +65,7 @@ class ApiConfig {
                 .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://aksihijau-development.et.r.appspot.com/api/")
+                .baseUrl("https://rational-text-381300.et.r.appspot.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

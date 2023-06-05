@@ -54,6 +54,72 @@
     <string name="title_company">Pengalang dana</string>
     <string name="dummy_company">Aksi Hijau</string>
     <string name="title_desc">Deskripsi</string>
-    <string name="desc"></string>
+    <string name="desc">Berdasarkan data baseline WVI 3 dari 5 desa di Sumba Barat Daya tidak memiliki sumber air bersih selama puluhan tahun Setiap hari warga terpaksa mengkonsumsi air kotor termasuk balita dan anak-anak.</string>
+    <string name="title_soil">Jenis Tanah</string>
+    <string name="soil">Tanah Gambus</string>
+    <string name="newsletter">Kabar Terbaru</string>
+    <string name="donatur">Donatur Teratas</string>
+    <string name="text_btn_donasi">Donasi Sekarang</string>
+
+    <!--  Donatur  -->
+    <string name="name_donatur">Juan Angela Alma</string>
+    <string name="donasi_donatur">Donasi sebesar Rp50.000</string>
+    <string name="waktu_donasi">5 Hari yang lalu</string>
+    <string name="no_empty">Tidak ada data yang dapat ditampilkan</string>
+
+    <!--  Profile  -->
+    <string name="to_admin">Ke halaman admin ></string>
+    <string name="title_name">Nama Lengkap</string>
+    <string name="dummy_name">Jhon Doe</string>
+    <string name="title_email">Email</string>
+    <string name="dummy_email">Johndoe@bangkit.academy</string>
+    <string name="title_ttl">Tanggal Lahir</string>
+    <string name="dummy_ttl">01 Januari 1990</string>
+
+
+    <!--  Data Dummy  -->
+    <string-array name="data_nama_donasi">
+        <item>Mari berdampak bersama Kiara dengan menanam 100 pohon </item>
+        <item>Bantu Anak SMP 21 dalam menanam 1000 pohon di sekitar sungai Bumera</item>
+    </string-array>
+
+    <string-array name="data_collect_donasi">
+        <item>Rp 1.000.000 </item>
+        <item>Rp 500.000</item>
+    </string-array>
+
+    <string-array name="data_duration_donasi">
+        <item>12 hari </item>
+        <item>32 hari </item>
+    </string-array>
+
+    <string-array name="data_company_donasi">
+        <item>Kiara</item>
+        <item>SMP 21</item>
+    </string-array>
+
+    <string-array name="data_decs_donasi">
+        <item>Kiara adalah perusahaan yang bergerak di bidang pencinta alam,
+            dan kami mengundang kamu untuk ikut berkontribusi bersami kami
+            dalam program penanaman pohon. Kami berencana akan menanam pohon di bandung. mari
+            sukseskan event kami, seribu darimu sangat membantu
+        </item>
+        <item>Kegiatan ini dilaksanakan oleh siswa/i SMP 21 tanggerang, kami sangat berharap
+            anda untuk membantu kami dalam pelaksaanan acara ini dan di harapkan dengan
+            adanya kegiatan ini dapat menjadi pemancing/trigger untuk sekolah lain untuk bisa
+            membantu alam menjadi lebih layak. Kontribusi kamu sangat di harapakan.
+        </item>
+    </string-array>
+
+    <string-array name="data_soil_donasi">
+        <item>Tanah Gambus</item>
+        <item>Tanah Kering</item>
+    </string-array>
+
+    <string-array name="data_gambar_donasi">
+        <item>@drawable/dummy_kiara</item>
+        <item>@drawable/dummy_smp_2</item>
+    </string-array>
+
 
 </resources>
