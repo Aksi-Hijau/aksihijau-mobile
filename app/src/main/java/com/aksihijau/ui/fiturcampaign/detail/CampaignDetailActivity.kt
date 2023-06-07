@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.CampaignDetailsData
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
+import com.aksihijau.ui.fiturcampaign.donatur.DonaturListActivity
 import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.bumptech.glide.Glide
 
@@ -43,16 +44,7 @@ class CampaignDetailActivity : AppCompatActivity() {
             updateUI(campaignDetails)
         })
 
-        binding.cvSoil.setOnClickListener {
-            val soilId = campaignDetailViewModel.campaignDetails.value?.soil?.id
-
-            soilId?.let {
-                val intent = Intent(this, SoilActivity::class.java)
-                intent.putExtra("soilId", it)
-                startActivity(intent)
-            }
-        }
-
+        clickItem()
 
     }
 
@@ -73,7 +65,30 @@ class CampaignDetailActivity : AppCompatActivity() {
             binding.desc.text = Html.fromHtml(data.description, Html.FROM_HTML_MODE_COMPACT)
             binding.companyName.text = data.fundraiser?.name
             binding.jenisTanah.text = data.soil?.type
+        }
+    }
 
+    private fun clickItem(){
+        binding.cvSoil.setOnClickListener {
+            val soilId = campaignDetailViewModel.campaignDetails.value?.soil?.id
+
+            soilId?.let {
+                val intent = Intent(this, SoilActivity::class.java)
+                intent.putExtra("soilId", it)
+                startActivity(intent)
+            }
+        }
+
+        binding.cvDonatur.setOnClickListener {
+            val slug = campaignDetailViewModel.campaignDetails.value?.slug
+            slug?.let {
+                val intent = Intent(this, DonaturListActivity::class.java)
+                intent.putExtra(EXTRA_SLUG, it)
+                startActivity(intent)
+            }
+        }
+        binding.backPress.setOnClickListener {
+            onBackPressed()
         }
     }
 }

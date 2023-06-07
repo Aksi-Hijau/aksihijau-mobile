@@ -7,7 +7,7 @@ data class DonaturResponse(
     val success: Boolean? = null,
 
     @SerializedName("data")
-    val data: Donation? = null,
+    val data: List<Donation>? = null,
 
     @SerializedName("errors")
     val errors: Any? = null

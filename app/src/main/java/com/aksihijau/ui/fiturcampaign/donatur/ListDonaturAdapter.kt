@@ -48,4 +48,10 @@ class ListDonaturAdapter(
     }
 
     override fun getItemCount(): Int = listDonatur.size
+
+    fun setData(donatur : List<Donation>){
+        listDonatur.clear()
+        listDonatur.addAll(donatur)
+        notifyDataSetChanged()
+    }
 }

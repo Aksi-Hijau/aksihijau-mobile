@@ -20,6 +20,7 @@
             android:src="@drawable/ic_broken_image_24" />
 
         <ImageView
+            android:id="@+id/back_press"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back_24"
