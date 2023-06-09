@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/donasi_donatur"
-                android:textSize="13dp"
+                android:textSize="13sp"
                 android:layout_marginTop="2dp"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@id/tv_name_donatur"/>
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/waktu_donasi"
-                android:textSize="10dp"
+                android:textSize="10sp"
                 android:layout_marginTop="2dp"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@id/tv_donasi_donatur"/>

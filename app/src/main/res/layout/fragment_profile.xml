@@ -113,6 +113,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/box_ttl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -148,8 +149,28 @@
             app:layout_constraintTop_toBottomOf="@id/iv_ttl"
             app:layout_constraintVertical_bias="0.0" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_makecampaign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@id/box_ttl"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:cardBackgroundColor="@color/green_1000">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/make_campaign"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </androidx.cardview.widget.CardView>
 
 
 

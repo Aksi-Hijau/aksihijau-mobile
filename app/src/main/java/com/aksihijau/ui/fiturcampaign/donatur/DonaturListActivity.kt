@@ -2,6 +2,9 @@ package com.aksihijau.ui.fiturcampaign.donatur
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +22,14 @@ class DonaturListActivity : AppCompatActivity() {
         binding = ActivityDonationListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar.root as Toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setTitle("Donatur List")
+        }
+        binding.toolbar.root.setTitleTextColor(resources.getColor(R.color.white))
+
         val rvDonatur : RecyclerView = binding.rvListDonatur
         rvDonatur.layoutManager = LinearLayoutManager(this)
         donaturAdapter = ListDonaturAdapter(ArrayList())
@@ -32,7 +43,11 @@ class DonaturListActivity : AppCompatActivity() {
         }
 
         donaturViewModel.isLoading.observe(this, { isLoading ->
-            // Handle loading state here
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         })
 
         donaturViewModel.isSuccess.observe(this, { isSuccess ->
@@ -46,5 +61,10 @@ class DonaturListActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

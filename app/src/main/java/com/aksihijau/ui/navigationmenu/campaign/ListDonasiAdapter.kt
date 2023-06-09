@@ -15,6 +15,8 @@ class ListDonasiAdapter(
     private val onItemClick : (DataCampaign) -> Unit
 )  : RecyclerView.Adapter<ListDonasiAdapter.ListViewHolder>(){
 
+    private val originalList: ArrayList<DataCampaign> = ArrayList(listDonasi)
+
     inner class ListViewHolder(private val binding: ListDonationBinding) : RecyclerView.ViewHolder(binding.root){
         val imageDonasi : ImageView = itemView.findViewById(R.id.imageDonasi)
         val tvNameCampaign : TextView = itemView.findViewById(R.id.tv_nameCampaign)
@@ -51,7 +53,13 @@ class ListDonasiAdapter(
     fun setData(campaigns: List<DataCampaign>) {
         listDonasi.clear()
         listDonasi.addAll(campaigns)
+        originalList.clear()
+        originalList.addAll(campaigns)
         notifyDataSetChanged()
+    }
+
+    fun getOriginalData(): List<DataCampaign> {
+        return originalList
     }
 
 }

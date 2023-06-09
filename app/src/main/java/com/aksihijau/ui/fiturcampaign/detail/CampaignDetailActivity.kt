@@ -9,6 +9,7 @@ import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.CampaignDetailsData
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
 import com.aksihijau.ui.fiturcampaign.donatur.DonaturListActivity
+import com.aksihijau.ui.fiturcampaign.newsletter.NewsListActivity
 import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.bumptech.glide.Glide
 
@@ -83,6 +84,14 @@ class CampaignDetailActivity : AppCompatActivity() {
             val slug = campaignDetailViewModel.campaignDetails.value?.slug
             slug?.let {
                 val intent = Intent(this, DonaturListActivity::class.java)
+                intent.putExtra(EXTRA_SLUG, it)
+                startActivity(intent)
+            }
+        }
+        binding.cvNewsletter.setOnClickListener {
+            val slug = campaignDetailViewModel.campaignDetails.value?.slug
+            slug?.let {
+                val intent = Intent(this, NewsListActivity::class.java)
                 intent.putExtra(EXTRA_SLUG, it)
                 startActivity(intent)
             }

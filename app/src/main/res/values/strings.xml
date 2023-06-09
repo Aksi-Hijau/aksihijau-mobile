@@ -76,51 +76,24 @@
     <string name="dummy_email">Johndoe@bangkit.academy</string>
     <string name="title_ttl">Tanggal Lahir</string>
     <string name="dummy_ttl">01 Januari 1990</string>
+    <string name="make_campaign">Make Campaign</string>
 
+    <!--  Make Campaign  -->
+    <string name="Analysis_Tanah">Analisis Tanah</string>
+    <string name="gallery_soil">Gallery</string>
+    <string name="camera_soil">Camera</string>
+    <string name="create_campaign">Membuat Campaign</string>
+    <string name="title_hasil">Hasil Analisis Tanah</string>
+    <string name="hasil">Tanah Dummy</string>
+    <string name="invalid_permission">Izin tidak diberikan</string>
+    <string name="title_activity_news_list">NewsListActivity</string>
 
-    <!--  Data Dummy  -->
-    <string-array name="data_nama_donasi">
-        <item>Mari berdampak bersama Kiara dengan menanam 100 pohon </item>
-        <item>Bantu Anak SMP 21 dalam menanam 1000 pohon di sekitar sungai Bumera</item>
-    </string-array>
-
-    <string-array name="data_collect_donasi">
-        <item>Rp 1.000.000 </item>
-        <item>Rp 500.000</item>
-    </string-array>
-
-    <string-array name="data_duration_donasi">
-        <item>12 hari </item>
-        <item>32 hari </item>
-    </string-array>
-
-    <string-array name="data_company_donasi">
-        <item>Kiara</item>
-        <item>SMP 21</item>
-    </string-array>
-
-    <string-array name="data_decs_donasi">
-        <item>Kiara adalah perusahaan yang bergerak di bidang pencinta alam,
-            dan kami mengundang kamu untuk ikut berkontribusi bersami kami
-            dalam program penanaman pohon. Kami berencana akan menanam pohon di bandung. mari
-            sukseskan event kami, seribu darimu sangat membantu
-        </item>
-        <item>Kegiatan ini dilaksanakan oleh siswa/i SMP 21 tanggerang, kami sangat berharap
-            anda untuk membantu kami dalam pelaksaanan acara ini dan di harapkan dengan
-            adanya kegiatan ini dapat menjadi pemancing/trigger untuk sekolah lain untuk bisa
-            membantu alam menjadi lebih layak. Kontribusi kamu sangat di harapakan.
-        </item>
-    </string-array>
-
-    <string-array name="data_soil_donasi">
-        <item>Tanah Gambus</item>
-        <item>Tanah Kering</item>
-    </string-array>
-
-    <string-array name="data_gambar_donasi">
-        <item>@drawable/dummy_kiara</item>
-        <item>@drawable/dummy_smp_2</item>
-    </string-array>
+    <!--  Home Make Campaign  -->
+    <string name="makecampaign_greatings">Hai Pahlawan Hijau</string>
+    <string name="makecampaign_greatings2">Apakah kamu ingin mencoba sesuatu yang keren...</string>
+    <string name="makecampaign_title_fiturAI">Coba fitur AI</string>
+    <string name="makecampaign_subtitle_fiturAI">Anda akan disuguhkan cara perawatan tanaman</string>
+    <string name="check_tanah">Klasifikasi Tanah</string>
 
 
 </resources>

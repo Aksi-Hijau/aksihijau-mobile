@@ -1,5 +1,6 @@
 package com.aksihijau.ui.navigationmenu.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.databinding.FragmentProfileBinding
+import com.aksihijau.ui.makecampaign.SoilAnalysis.SoilAnalysisActivity
 
 class ProfileFragment : Fragment() {
 
@@ -32,7 +34,16 @@ class ProfileFragment : Fragment() {
         profileViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = itx
         }
+
+        binding.cvMakecampaign.setOnClickListener {
+            openSoilAnalysisActivity()
+        }
         return root
+    }
+
+    private fun openSoilAnalysisActivity() {
+        val intent = Intent(requireContext(), SoilAnalysisActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

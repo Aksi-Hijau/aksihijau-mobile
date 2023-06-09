@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
-            // Handle loading state here
+
         })
         homeViewModel.isSuccess.observe(viewLifecycleOwner, { isSuccess ->
             // Handle success state here

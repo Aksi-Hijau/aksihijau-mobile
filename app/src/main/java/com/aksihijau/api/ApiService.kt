@@ -3,6 +3,7 @@ package com.aksihijau.api
 import com.aksihijau.api.campaignresponse.CampaignDetailsResponse
 import com.aksihijau.api.campaignresponse.CampaignResponse
 import com.aksihijau.api.campaignresponse.DonaturResponse
+import com.aksihijau.api.campaignresponse.ReportResponse
 import com.aksihijau.api.campaignresponse.SoilsResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,6 +44,11 @@ interface ApiService {
     fun getDonatur(
         @Path("slug") slug: String
     ): Call<DonaturResponse>
+
+    @GET("campaigns/{slug}/reports")
+    fun getReports(
+        @Path("slug") slug: String
+    ): Call<ReportResponse>
 
     @GET("soils/{id}")
     fun getSoil(
