@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.CampaignDetailsData
+import com.aksihijau.api.campaignresponse.DataCampaign
+import com.aksihijau.api.campaignresponse.Donation
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
+import com.aksihijau.datastore.datadummy.donasi
 import com.aksihijau.ui.fiturcampaign.donatur.DonaturListActivity
+import com.aksihijau.ui.fiturcampaign.donatur.ListDonaturAdapter
 import com.aksihijau.ui.fiturcampaign.newsletter.NewsListActivity
 import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.bumptech.glide.Glide
@@ -21,17 +27,26 @@ class CampaignDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCampaignDetailBinding
     private lateinit var campaignDetailViewModel: CampaignDetailViewModel
+    private lateinit var originalList: List<Donation>
+    private var donaturAdapter : ListDonaturAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCampaignDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val rvDonatur: RecyclerView = binding.rvDonaturDetail
+        rvDonatur.layoutManager = LinearLayoutManager(this)
+        rvDonatur.adapter = donaturAdapter
+
         val slug = intent.getStringExtra(EXTRA_SLUG)
 
         campaignDetailViewModel = ViewModelProvider(this, CampaignDetailFactory(this)).get(CampaignDetailViewModel::class.java)
 
-        slug?.let { campaignDetailViewModel.getCampaignDetails(it) }
+        slug?.let {
+            campaignDetailViewModel.getCampaignDetails(it)
+            campaignDetailViewModel.getDonatur_CampaignDetail(it)
+        }
 
         campaignDetailViewModel.isLoading.observe(this, { isLoading ->
             // Handle loading state here
@@ -44,6 +59,15 @@ class CampaignDetailActivity : AppCompatActivity() {
         campaignDetailViewModel.campaignDetails.observe(this, { campaignDetails ->
             updateUI(campaignDetails)
         })
+
+        campaignDetailViewModel.donaturs.observe(this, { donaturs ->
+            originalList = donaturs
+            donaturAdapter?.setData(originalList)
+            donaturAdapter?.setLimited(true)
+
+        })
+
+
 
         clickItem()
 

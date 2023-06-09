@@ -56,7 +56,9 @@ class DonaturListActivity : AppCompatActivity() {
 
         donaturViewModel.donaturs.observe(this, { donaturs ->
             donaturs?.let {
+                donaturAdapter.setLimited(false)
                 donaturAdapter.setData(it)
+
             }
 
         })

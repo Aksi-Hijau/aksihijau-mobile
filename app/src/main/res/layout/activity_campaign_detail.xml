@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/green_250"
-            android:src="@drawable/ic_broken_image_24" />
+            android:src="@drawable/ic_broken_image_24"
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/back_press"
@@ -225,7 +226,7 @@
                         android:textStyle="bold"/>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/cv_donatur_detail"
+                        android:id="@+id/rv_donatur_detail"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_marginStart="20dp"

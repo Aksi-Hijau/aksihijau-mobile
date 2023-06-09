@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.databinding.FragmentProfileBinding
-import com.aksihijau.ui.makecampaign.SoilAnalysis.SoilAnalysisActivity
+import com.aksihijau.ui.makecampaign.HomeMakeCampaignActivity
 
 class ProfileFragment : Fragment() {
 
@@ -42,7 +41,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun openSoilAnalysisActivity() {
-        val intent = Intent(requireContext(), SoilAnalysisActivity::class.java)
+        val intent = Intent(requireContext(), HomeMakeCampaignActivity::class.java)
         startActivity(intent)
     }
 

@@ -29,7 +29,7 @@
             android:name=".ui.makecampaign.SoilAnalysis.SoilAnalysisActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.makecampaign.HomeMakeCampaign"
+            android:name=".ui.makecampaign.HomeMakeCampaignActivity"
             android:exported="false" />
         <activity
             android:name=".ui.fiturcampaign.soil.SoilActivity"

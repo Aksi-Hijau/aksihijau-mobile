@@ -16,6 +16,7 @@ class ListDonasiAdapter(
 )  : RecyclerView.Adapter<ListDonasiAdapter.ListViewHolder>(){
 
     private val originalList: ArrayList<DataCampaign> = ArrayList(listDonasi)
+    private var isLimited = true
 
     inner class ListViewHolder(private val binding: ListDonationBinding) : RecyclerView.ViewHolder(binding.root){
         val imageDonasi : ImageView = itemView.findViewById(R.id.imageDonasi)
@@ -40,7 +41,7 @@ class ListDonasiAdapter(
         return ListViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = listDonasi.size
+    override fun getItemCount(): Int = if (isLimited) minOf(listDonasi.size, 3) else listDonasi.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listDonasi[position])
@@ -58,8 +59,23 @@ class ListDonasiAdapter(
         notifyDataSetChanged()
     }
 
-    fun getOriginalData(): List<DataCampaign> {
-        return originalList
+    fun setLimited(isLimited: Boolean) {
+        this.isLimited = isLimited
+        notifyDataSetChanged()
+    }
+
+    fun filterListByTitle(query: String) {
+        val filteredList = ArrayList<DataCampaign>()
+
+        for (campaign in originalList) {
+            if (campaign.title!!.contains(query, true)) {
+                filteredList.add(campaign)
+            }
+        }
+
+        listDonasi.clear()
+        listDonasi.addAll(filteredList)
+        notifyDataSetChanged()
     }
 
 }

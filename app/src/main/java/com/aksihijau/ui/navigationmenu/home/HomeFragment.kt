@@ -1,6 +1,7 @@
 package com.aksihijau.ui.navigationmenu.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.databinding.FragmentHomeBinding
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailActivity
 import com.aksihijau.ui.navigationmenu.campaign.CampaignViewModel
@@ -24,6 +26,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private var campaignAdapter: ListDonasiAdapter? = null
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var originalList: List<DataCampaign>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,10 +55,17 @@ class HomeFragment : Fragment() {
             // Handle success state here
         })
         homeViewModel.campaigns.observe(viewLifecycleOwner, { campaigns ->
-            campaignAdapter?.setData(campaigns)
+            originalList = campaigns
+            campaignAdapter?.setData(originalList)
+            campaignAdapter?.setLimited(true)
         })
 
         homeViewModel.getCampaigns_home()
+
+        binding.cvArtikel.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://dlh.semarangkota.go.id/manfaat-hutan-bagi-keberlangsungan-hidup-manusia-dan-lingkungan/"))
+            startActivity(intent)
+        }
 
         return root
     }

@@ -55,6 +55,7 @@ class CampaignFragment : Fragment() {
             // Handle success state here
         })
         campaignViewModel.campaigns.observe(viewLifecycleOwner, { campaigns ->
+            campaignAdapter.setLimited(false)
             campaignAdapter.setData(campaigns)
         })
 
@@ -82,17 +83,9 @@ class CampaignFragment : Fragment() {
     }
 
     private fun filterCampaign(query: String) {
-        val filteredList = ArrayList<DataCampaign>()
-
-        for (Campaign in campaignAdapter.getOriginalData()){
-            if (Campaign.title!!.contains(query, true)){
-                filteredList.add(Campaign)
-            }
-        }
-
-        campaignAdapter.setData(filteredList)
-
+        campaignAdapter.filterListByTitle(query)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

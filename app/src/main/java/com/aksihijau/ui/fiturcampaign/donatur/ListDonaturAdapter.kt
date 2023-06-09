@@ -17,6 +17,10 @@ class ListDonaturAdapter(
     private val listDonatur : ArrayList<Donation>
 ) : RecyclerView.Adapter<ListDonaturAdapter.ListViewHolder>() {
 
+    private val originalList: ArrayList<Donation> = ArrayList(listDonatur)
+    private var isLimited = true
+
+
     inner class ListViewHolder(private val binding: ListDonaturBinding) : RecyclerView.ViewHolder(binding.root){
         val imageDonatur : ImageView = itemView.findViewById(R.id.circle_photo)
         val tvNameDonatur : TextView = itemView.findViewById(R.id.tv_name_donatur)
@@ -47,11 +51,19 @@ class ListDonaturAdapter(
         holder.bind(listDonatur[position])
     }
 
-    override fun getItemCount(): Int = listDonatur.size
+    override fun getItemCount(): Int = if (isLimited) minOf(listDonatur.size, 3) else listDonatur.size
+
+    fun setLimited(isLimited: Boolean) {
+        this.isLimited = isLimited
+        notifyDataSetChanged()
+    }
+
 
     fun setData(donatur : List<Donation>){
         listDonatur.clear()
         listDonatur.addAll(donatur)
+        originalList.clear()
+        originalList.addAll(donatur)
         notifyDataSetChanged()
     }
 }

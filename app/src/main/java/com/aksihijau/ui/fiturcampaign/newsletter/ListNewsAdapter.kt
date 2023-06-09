@@ -1,5 +1,6 @@
 package com.aksihijau.ui.fiturcampaign.newsletter
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -19,6 +20,7 @@ class ListNewsAdapter(
         val tvNameCreator : TextView = itemView.findViewById(R.id.tv_name_creator)
         val tvtitlenews : TextView = itemView.findViewById(R.id.tv_title_news)
         val body_news : TextView = itemView.findViewById(R.id.body_news)
+        val tvdatenews : TextView = itemView.findViewById(R.id.tv_date_news)
 
         fun bind(report: Report){
             Glide.with(binding.root)
@@ -27,7 +29,8 @@ class ListNewsAdapter(
                 .into(imageCreator)
             tvNameCreator.text = report.cratorName
             tvtitlenews.text = report.title
-            body_news.text = report.body
+            body_news.text = Html.fromHtml(report.body, Html.FROM_HTML_MODE_COMPACT)
+            tvdatenews.text = report.createdAt
 
         }
 

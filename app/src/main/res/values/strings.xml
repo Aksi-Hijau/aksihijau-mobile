@@ -76,7 +76,6 @@
     <string name="dummy_email">Johndoe@bangkit.academy</string>
     <string name="title_ttl">Tanggal Lahir</string>
     <string name="dummy_ttl">01 Januari 1990</string>
-    <string name="make_campaign">Make Campaign</string>
 
     <!--  Make Campaign  -->
     <string name="Analysis_Tanah">Analisis Tanah</string>
@@ -91,9 +90,11 @@
     <!--  Home Make Campaign  -->
     <string name="makecampaign_greatings">Hai Pahlawan Hijau</string>
     <string name="makecampaign_greatings2">Apakah kamu ingin mencoba sesuatu yang keren...</string>
-    <string name="makecampaign_title_fiturAI">Coba fitur AI</string>
+    <string name="makecampaign_title_fiturAI">Coba Fitur AI</string>
     <string name="makecampaign_subtitle_fiturAI">Anda akan disuguhkan cara perawatan tanaman</string>
     <string name="check_tanah">Klasifikasi Tanah</string>
-
+    <string name="makecampaign_title_create">Buat Kampanye Lingkungan</string>
+    <string name="makecampaign_subtitle_create">Kampanya anda akan memberikan dampak yang bagus buat lingkungan</string>
+    <string name="make_campaign">Buat Kampanye Lingkungan</string>
 
 </resources>

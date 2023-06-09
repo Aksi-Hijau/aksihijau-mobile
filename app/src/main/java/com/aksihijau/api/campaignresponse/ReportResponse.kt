@@ -18,15 +18,21 @@ data class Report(
     val id: Int? = null,
 
 
-    @SerializedName("cratorName")
+    @SerializedName("creatorName")
     val cratorName: String? = null,
 
-    @SerializedName("cratorImage")
+    @SerializedName("creatorImage")
     val cratorImage: String? = null,
 
     @SerializedName("title")
     val title: String? = null,
 
     @SerializedName("body")
-    val body: String? = null
+    val body: String? = null,
+
+    @SerializedName("createdAt")
+    val createdAt: String? = null,
+
+
+
 )
