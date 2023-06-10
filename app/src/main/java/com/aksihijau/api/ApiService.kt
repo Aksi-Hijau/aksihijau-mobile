@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -55,10 +56,40 @@ interface ApiService {
         @Path("id") id: Int
     ): Call<SoilsResponse>
 
+    @GET("payments")
+    fun getPayments(
+    ): Call<PaymentsResponse>
 
+    @GET("donations")
+    fun getDonationHistories(
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+        ) : Call<DonationHistoriesResponse>
 
+    @FormUrlEncoded
+    @POST("campaigns/{slug}/donations")
+    fun createDonation(
+        @Header("Authorization") token: String,
+        @Header("x-refresh") refreshToken: String,
+        @Path("slug") slug: String,
+        @Field("amount") amount: Int,
+        @Field("paymentType") paymentType: String,
+        @Field("paymentMethod") paymentMethod: String
+        ) : Call<CreateDonationResponse>
 
+    @GET("donations/{invoice}")
+    fun getHistoryDetail(
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+        @Path("invoice") invoice: String
+    ) : Call<HistoryDetailResponse>
 
+    @GET("donations/{invoice}/instructions")
+    fun getDetailInstruksi(
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+        @Path("invoice") invoice: String
+    ) : Call<DetailInstruksiResponse>
 
 }
 

@@ -4,6 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +16,6 @@ import com.aksihijau.api.campaignresponse.CampaignDetailsData
 import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.api.campaignresponse.Donation
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
-import com.aksihijau.datastore.datadummy.donasi
 import com.aksihijau.ui.fiturcampaign.donatur.DonaturListActivity
 import com.aksihijau.ui.fiturcampaign.donatur.ListDonaturAdapter
 import com.aksihijau.ui.fiturcampaign.newsletter.NewsListActivity
@@ -27,9 +30,10 @@ class CampaignDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCampaignDetailBinding
     private lateinit var campaignDetailViewModel: CampaignDetailViewModel
+    private lateinit var tokenViewModel: TokenViewModel
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
     private lateinit var originalList: List<Donation>
     private var donaturAdapter : ListDonaturAdapter? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCampaignDetailBinding.inflate(layoutInflater)
@@ -42,6 +46,8 @@ class CampaignDetailActivity : AppCompatActivity() {
         val slug = intent.getStringExtra(EXTRA_SLUG)
 
         campaignDetailViewModel = ViewModelProvider(this, CampaignDetailFactory(this)).get(CampaignDetailViewModel::class.java)
+        val pref = TokenPreferences.getInstance(dataStore)
+        tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
 
         slug?.let {
             campaignDetailViewModel.getCampaignDetails(it)
@@ -102,6 +108,20 @@ class CampaignDetailActivity : AppCompatActivity() {
                 intent.putExtra("soilId", it)
                 startActivity(intent)
             }
+        }
+
+        binding.btnDonasiNow.setOnClickListener {
+            tokenViewModel.getLoginSettings().observe(this){
+                if(it){
+                    val slug = campaignDetailViewModel.campaignDetails.value!!.slug
+                    val intent: Intent = Intent(this, NominalMetodeActivity::class.java)
+                    intent.putExtra(NominalMetodeActivity.EXTRA_SLUG, slug)
+                    startActivity(intent)
+                }else {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+            }
+
         }
 
         binding.cvDonatur.setOnClickListener {

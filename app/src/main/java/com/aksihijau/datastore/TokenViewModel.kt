@@ -16,6 +16,10 @@ class TokenViewModel(private val pref: TokenPreferences)  : ViewModel() {
         return pref.getToken().asLiveData()
     }
 
+    fun getRefreshToken(): LiveData<String>{
+        return pref.getRefreshToken().asLiveData()
+    }
+
     fun saveLoginSetting(isLogin: Boolean) {
         viewModelScope.launch {
             pref.saveLoginSetting(isLogin)

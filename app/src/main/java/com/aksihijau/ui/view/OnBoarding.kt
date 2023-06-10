@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -32,6 +33,7 @@ class OnBoarding : AppCompatActivity() {
         tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
 
         tokenViewModel.getLoginSettings().observe(this){
+            Log.d("OnBoarding", "setupViewModel: $it ")
             if(it){
                 startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()

@@ -3,10 +3,12 @@
     <style name="Base.Theme.AksiHijau" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">#FF316E00</item>
-        <item name="colorSecondary">#FF577A20</item>
 
 
     </style>
 
-    <style name="Theme.AksiHijau" parent="Base.Theme.AksiHijau" />
+    <style name="Theme.AksiHijau" parent="Base.Theme.AksiHijau">
+        <item name="colorPrimary">#FF316E00</item>
+    </style>
+
 </resources>

@@ -4,7 +4,7 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="colorPrimary">#FF316E00</item>
-        <item name="colorSecondary">#FF577A20</item>
+        <item name="colorOnSecondary">#FF577A20</item>
         <item name="colorOnPrimary">#FFF</item>
     </style>
 </resources>
