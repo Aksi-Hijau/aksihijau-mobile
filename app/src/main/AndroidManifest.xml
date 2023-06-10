@@ -40,6 +40,15 @@
             android:exported="false"
             android:parentActivityName=".ui.fiturcampaign.detail.CampaignDetailActivity" />
         <activity
+            android:name=".ui.payment.pilihnominalmetode.NominalMetodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.payment.instruksipembyaran.InstruksiPembayaranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.navigationmenu.history.HistoryDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.fiturcampaign.detail.CampaignDetailActivity"
             android:exported="false" />
         <activity

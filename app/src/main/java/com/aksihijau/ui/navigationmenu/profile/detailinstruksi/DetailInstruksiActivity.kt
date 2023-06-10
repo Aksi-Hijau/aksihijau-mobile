@@ -1,4 +1,4 @@
-package com.aksihijau.ui.payment.detailinstruksi
+package com.aksihijau.ui.navigationmenu.profile.detailinstruksi
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

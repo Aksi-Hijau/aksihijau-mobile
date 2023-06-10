@@ -69,13 +69,11 @@
     <string name="no_empty">Tidak ada data yang dapat ditampilkan</string>
 
     <!--  Profile  -->
-    <string name="to_admin">Ke halaman admin ></string>
-    <string name="title_name">Nama Lengkap</string>
-    <string name="dummy_name">Jhon Doe</string>
-    <string name="title_email">Email</string>
-    <string name="dummy_email">Johndoe@bangkit.academy</string>
-    <string name="title_ttl">Tanggal Lahir</string>
-    <string name="dummy_ttl">01 Januari 1990</string>
+    <string name="to_admin">Pergi ke halaman admin</string>
+    <string name="dummy_name">Juan Angela Alma</string>
+    <string name="btn_datapribadi">Data Pribadi</string>
+    <string name="btn_campiagnsaya">Kampanye saya</string>
+    <string name="btn_logout_profile">Keluar</string>
 
     <!--  Make Campaign  -->
     <string name="Analysis_Tanah">Analisis Tanah</string>
@@ -86,6 +84,7 @@
     <string name="hasil">Tanah Dummy</string>
     <string name="invalid_permission">Izin tidak diberikan</string>
     <string name="title_activity_news_list">NewsListActivity</string>
+    <string name="see_soil_detail">Lihat Deskripsi Tanah</string>
 
     <!--  Home Make Campaign  -->
     <string name="makecampaign_greatings">Hai Pahlawan Hijau</string>

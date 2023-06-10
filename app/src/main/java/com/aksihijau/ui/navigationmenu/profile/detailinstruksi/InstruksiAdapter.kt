@@ -1,4 +1,4 @@
-package com.aksihijau.ui.payment.detailinstruksi
+package com.aksihijau.ui.navigationmenu.profile.detailinstruksi
 
 import android.text.Html
 import android.view.LayoutInflater

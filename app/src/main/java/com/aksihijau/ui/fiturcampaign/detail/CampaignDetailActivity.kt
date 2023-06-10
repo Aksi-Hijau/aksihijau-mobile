@@ -1,5 +1,6 @@
 package com.aksihijau.ui.fiturcampaign.detail
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,10 +17,15 @@ import com.aksihijau.api.campaignresponse.CampaignDetailsData
 import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.api.campaignresponse.Donation
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
+import com.aksihijau.datastore.TokenPreferences
+import com.aksihijau.datastore.TokenViewModel
+import com.aksihijau.datastore.TokenViewModelFactory
 import com.aksihijau.ui.fiturcampaign.donatur.DonaturListActivity
 import com.aksihijau.ui.fiturcampaign.donatur.ListDonaturAdapter
 import com.aksihijau.ui.fiturcampaign.newsletter.NewsListActivity
 import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
+import com.aksihijau.ui.payment.pilihnominalmetode.NominalMetodeActivity
+import com.aksihijau.ui.user.login.LoginActivity
 import com.bumptech.glide.Glide
 
 class CampaignDetailActivity : AppCompatActivity() {

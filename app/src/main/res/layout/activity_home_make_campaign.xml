@@ -129,7 +129,7 @@
                     android:id="@+id/iv_photo_campaign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/campaign_make_1"
+                    android:src="@drawable/campaign_make_2"
                     android:padding="20dp"
                     />
 
