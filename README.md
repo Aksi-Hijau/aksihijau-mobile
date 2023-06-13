@@ -41,4 +41,4 @@ Soil analysis using Machine Learning to provide information about soil condition
 If you would like to contribute to this project, you can fork this repository, make the desired changes, and submit a pull request. We appreciate contributions from the developer community.
 
 # 📄 License
-This project is licensed under the [MIT License](LICENSE) License.
+This project is licensed under the [MIT License](LICENSE).
