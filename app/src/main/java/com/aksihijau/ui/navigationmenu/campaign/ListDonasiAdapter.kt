@@ -29,7 +29,7 @@ class ListDonasiAdapter(
             tvTarget.text = dataCampaign.target.toString()
             tvSisaHari.text = dataCampaign.remainingDays.toString()
 
-            Glide.with(binding.root)
+            Glide.with(imageDonasi)
                 .load(dataCampaign.image)
                 .error(R.drawable.ic_error_image_24) // Optional error image
                 .into(imageDonasi)

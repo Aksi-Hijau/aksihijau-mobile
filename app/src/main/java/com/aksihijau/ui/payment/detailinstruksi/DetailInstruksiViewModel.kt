@@ -1,4 +1,4 @@
-package com.aksihijau.ui.navigationmenu.profile.detailinstruksi
+package com.aksihijau.ui.payment.detailinstruksi
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

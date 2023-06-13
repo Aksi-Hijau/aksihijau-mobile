@@ -1,19 +1,32 @@
 package com.aksihijau.ui.navigationmenu.profile
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.databinding.FragmentProfileBinding
+import com.aksihijau.datastore.TokenPreferences
+import com.aksihijau.datastore.TokenViewModel
+import com.aksihijau.datastore.TokenViewModelFactory
 import com.aksihijau.ui.makecampaign.HomeMakeCampaignActivity
+import com.aksihijau.ui.fiturcampaign.mycampaigns.MyCampaignsActivity
+import com.aksihijau.ui.user.login.LoginActivity
+import com.aksihijau.ui.view.SplashScreen
+import com.bumptech.glide.Glide
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
+    private lateinit var tokenViewModel: TokenViewModel
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -28,10 +41,59 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val pref = TokenPreferences.getInstance(requireContext().dataStore)
+        tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
 
 //        val textView: TextView = binding.textProfile
         profileViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = itx
+        }
+
+
+        tokenViewModel.getLoginSettings().observe(viewLifecycleOwner){
+            if(!it){
+                binding.btLogin2.visibility = View.VISIBLE
+                binding.textView14.visibility = View.VISIBLE
+
+                binding.btLogin2.setOnClickListener {
+                    val intent = Intent( requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
+                }
+
+                binding.imageCompany.visibility =       View.GONE
+                binding.tvNamaProfile.visibility =      View.GONE
+                binding.cvMakecampaign.visibility =     View.GONE
+                binding.cvDatapribadi.visibility =      View.GONE
+                binding.cvLogoutProfile.visibility =    View.GONE
+                binding.cvKampanyasaya.visibility =     View.GONE
+
+            }else {
+                binding.btLogin2.visibility = View.INVISIBLE
+                binding.textView14.visibility = View.INVISIBLE
+
+                binding.imageCompany.visibility =       View.VISIBLE
+                binding.tvNamaProfile.visibility =      View.VISIBLE
+                binding.cvMakecampaign.visibility =     View.VISIBLE
+                binding.cvDatapribadi.visibility =      View.VISIBLE
+                binding.cvLogoutProfile.visibility =    View.VISIBLE
+                binding.cvKampanyasaya.visibility =     View.VISIBLE
+
+                tokenViewModel.getToken().observe(viewLifecycleOwner){ token->
+                    tokenViewModel.getRefreshToken().observe(viewLifecycleOwner){refreshToken->
+                        profileViewModel.getUser(token, refreshToken)
+                    }
+                }
+
+                setupView()
+                profileViewModel.user.observe(viewLifecycleOwner){
+                    Log.d("Profie Fragment", "onCreateView: $it")
+                    Glide.with(binding.imageCompany).load(it!!.photo).into(binding.imageCompany)
+                    binding.tvNamaProfile.text = it.name
+                    if(it.role == "user"){
+                        binding.cvMakecampaign.visibility = View.GONE
+                    }
+                }
+            }
         }
 
         binding.cvMakecampaign.setOnClickListener {
@@ -43,6 +105,28 @@ class ProfileFragment : Fragment() {
     private fun openSoilAnalysisActivity() {
         val intent = Intent(requireContext(), HomeMakeCampaignActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun setupView(){
+        binding.cvLogoutProfile.setOnClickListener{
+            tokenViewModel.saveLoginSetting(false)
+            tokenViewModel.saveToken("")
+            tokenViewModel.saveRefreshToken("")
+
+            tokenViewModel.getLoginSettings().observe(viewLifecycleOwner){
+                if(!it){
+                    val intent = Intent(requireContext(), SplashScreen::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+            }
+        }
+
+        binding.cvKampanyasaya.setOnClickListener {
+            startActivity(Intent(requireContext(), MyCampaignsActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {

@@ -20,7 +20,7 @@ import com.aksihijau.databinding.ActivityHistoryDetailBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
 import com.aksihijau.datastore.TokenViewModelFactory
-import com.aksihijau.ui.navigationmenu.profile.detailinstruksi.DetailInstruksiActivity
+import com.aksihijau.ui.payment.detailinstruksi.DetailInstruksiActivity
 import com.bumptech.glide.Glide
 
 

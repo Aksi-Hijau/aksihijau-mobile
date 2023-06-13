@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,6 +13,7 @@
         android:maxSdkVersion="18" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,9 +22,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AksiHijau"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
             android:name=".ui.webview.Makecampaign_webview_activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fiturcampaign.mycampaigns.MyCampaignsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.fiturcampaign.newsletter.NewsListActivity"
@@ -57,7 +61,7 @@
         <activity
             android:name=".ui.navigationmenu.BottomNavigationActivity"
             android:exported="true"
-            android:label="@string/title_activity_bottom_navigation">
+            android:label="@string/title_activity_bottom_navigation" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,6 +79,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.user.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.payment.detailinstruksi.DetailInstruksiActivity"
             android:exported="false" />
     </application>
 

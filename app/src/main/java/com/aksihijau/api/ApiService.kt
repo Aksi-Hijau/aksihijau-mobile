@@ -3,6 +3,7 @@ package com.aksihijau.api
 import com.aksihijau.api.campaignresponse.CampaignDetailsResponse
 import com.aksihijau.api.campaignresponse.CampaignResponse
 import com.aksihijau.api.campaignresponse.DonaturResponse
+import com.aksihijau.api.campaignresponse.MyCampaignsResponse
 import com.aksihijau.api.campaignresponse.ReportResponse
 import com.aksihijau.api.campaignresponse.SoilsResponse
 import okhttp3.OkHttpClient
@@ -92,6 +93,18 @@ interface ApiService {
         @Header("x-refresh") refreshToken: String,
         @Path("invoice") invoice: String
     ) : Call<DetailInstruksiResponse>
+
+    @GET("user")
+    fun getUser(
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+    ) : Call<UserResponse>
+
+    @GET("my-campaigns")
+    fun getMyCampaigns(
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+    ): Call<MyCampaignsResponse>
 
 }
 

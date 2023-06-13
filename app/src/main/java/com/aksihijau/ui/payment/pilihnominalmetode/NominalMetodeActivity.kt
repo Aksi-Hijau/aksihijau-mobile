@@ -79,7 +79,7 @@ class NominalMetodeActivity : AppCompatActivity() {
         }
 
         binding.btn5000.setOnClickListener {
-            banyakDonasi = 5000
+            banyakDonasi = 10000
             binding.btn5000.setTextColor(getColor(R.color.white))
             binding.btn50000.setTextColor(getColor(R.color. black))
             binding.btn10000.setTextColor(getColor(R.color.black))
@@ -95,7 +95,7 @@ class NominalMetodeActivity : AppCompatActivity() {
         }
 
         binding.btn10000.setOnClickListener {
-            banyakDonasi = 10000
+            banyakDonasi = 20000
             binding.btn10000.setTextColor(getColor(R.color.white))
             binding.btn5000.setTextColor(getColor(R.color. black))
             binding.btn50000.setTextColor(getColor(R.color.black))
@@ -111,7 +111,7 @@ class NominalMetodeActivity : AppCompatActivity() {
         }
 
         binding.btn25000.setOnClickListener {
-            banyakDonasi = 25000
+            banyakDonasi = 50000
             binding.btn25000.setTextColor(getColor(R.color.white))
             binding.btn5000.setTextColor(getColor(R.color. black))
             binding.btn10000.setTextColor(getColor(R.color.black))
@@ -127,7 +127,7 @@ class NominalMetodeActivity : AppCompatActivity() {
         }
 
         binding.btn50000.setOnClickListener {
-            banyakDonasi = 50000
+            banyakDonasi = 100000
             binding.btn50000.setTextColor(getColor(R.color.white))
             binding.btn5000.setTextColor(getColor(R.color. black))
             binding.btn10000.setTextColor(getColor(R.color.black))
@@ -191,8 +191,8 @@ class NominalMetodeActivity : AppCompatActivity() {
 
         binding.btnLanjutPembyaran.setOnClickListener {
 
-            if(banyakDonasi <= 1000){
-                Toast.makeText(this, "Donasi Minimal Rp 1000", Toast.LENGTH_SHORT).show()
+            if(banyakDonasi <= 10000){
+                Toast.makeText(this, "Donasi Minimal Rp 10000", Toast.LENGTH_SHORT).show()
             } else if (!this::_payment.isInitialized){
                 Toast.makeText(this, "Pilih Metode Pembayaran", Toast.LENGTH_SHORT).show()
             } else {
