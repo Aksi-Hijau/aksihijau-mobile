@@ -1,3 +1,14 @@
+## 👥 Aksi Hijau - Capstone Project Bangkit 2023
+Group = C23-PS329
+Member =
+- (ML) M160DSX0257 –  Irfan Divi Zianka 
+- (ML) M282DSY0240 – Vina Maulida Junia 
+- (CC)  C287DSX0741 – Juan Angela Alma 
+- (CC)  C287DSX0883 – Yusril Isra Mahendra 
+- (MD) A360DKX4118 – Reynhard Powiwi 
+- (MD) A287DKX3849 – Rayyan Nur Fauzan 
+
+
 # 🌳 Aplikasi Aksi Hijau
 
 Aplikasi Aksi Hijau adalah sebuah aplikasi yang dibuat untuk membantu komunitas dalam melakukan kampanye dan fokus pada penanaman pohon. Aplikasi ini dilengkapi dengan fitur analisis tanah menggunakan Machine Learning 📊 dan pemberi rekomendasi pohon 🌱 apa yang bagus ditanami. Aplikasi ini dibangun menggunakan berbagai teknologi seperti Retrofit 🌐, SharedPreferences 🔐, ViewBinding 🔗, TensorFlow Lite 🧠, Material Components 💎, RecyclerView ♻️, dan masih banyak lagi.
@@ -43,3 +54,5 @@ Jika Anda ingin berkontribusi pada proyek ini, Anda dapat melakukan fork reposit
 ## 📄 Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+## 📄 Lisensi
