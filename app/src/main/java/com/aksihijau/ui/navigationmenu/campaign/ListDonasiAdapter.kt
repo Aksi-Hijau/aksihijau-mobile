@@ -9,6 +9,11 @@ import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.databinding.ListDonationBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class ListDonasiAdapter(
     private val listDonasi : ArrayList<DataCampaign>,
@@ -29,8 +34,11 @@ class ListDonasiAdapter(
             tvTarget.text = dataCampaign.target.toString()
             tvSisaHari.text = dataCampaign.remainingDays.toString()
 
-            Glide.with(imageDonasi)
-                .load(dataCampaign.image)
+            val imageUrl = dataCampaign.image?.replace("storage.cloud.google.com", "storage.googleapis.com")
+
+            Glide.with(binding.root)
+                .load(imageUrl)
+                .apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
                 .error(R.drawable.ic_error_image_24) // Optional error image
                 .into(imageDonasi)
         }

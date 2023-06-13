@@ -87,8 +87,10 @@ class CampaignDetailActivity : AppCompatActivity() {
 
     private fun updateUI(campaignDetails: CampaignDetailsData?) {
         campaignDetails?.let { data ->
+
+            val imageUrl = data.image?.replace("storage.cloud.google.com", "storage.googleapis.com")
             Glide.with(binding.root)
-                .load(data.image)
+                .load(imageUrl)
                 .error(R.drawable.ic_error_image_24)
                 .into(binding.ivHeaderDetail)
             Glide.with(binding.root)
