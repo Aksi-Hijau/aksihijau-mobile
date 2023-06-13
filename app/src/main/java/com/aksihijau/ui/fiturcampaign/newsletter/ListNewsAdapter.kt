@@ -10,6 +10,8 @@ import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.Report
 import com.aksihijau.databinding.ListNewsBinding
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ListNewsAdapter(
     private val listNewsletter : ArrayList<Report>
@@ -30,7 +32,13 @@ class ListNewsAdapter(
             tvNameCreator.text = report.cratorName
             tvtitlenews.text = report.title
             body_news.text = Html.fromHtml(report.body, Html.FROM_HTML_MODE_COMPACT)
-            tvdatenews.text = report.createdAt
+
+            val originalDateString = report.createdAt
+            val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+            val date = originalFormat.parse(originalDateString)
+            val targetFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.getDefault())
+            val formattedDateString = targetFormat.format(date)
+            tvdatenews.text = formattedDateString
 
         }
 

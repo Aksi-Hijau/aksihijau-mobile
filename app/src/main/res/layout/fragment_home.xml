@@ -40,10 +40,11 @@
     </FrameLayout>
 
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/header_home">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/header_home"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -57,7 +58,8 @@
                 android:layout_margin="10dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/rv_donasi"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_donasi"
@@ -110,10 +112,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
+                        android:src="@drawable/dummy_artikel"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/dummy_artikel"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvNama_artikel"
@@ -126,7 +127,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         app:layout_constraintTop_toBottomOf="@id/ivNews"
-                        tools:text="Manfaat Hutan Bagi Keberlangsungan Hidup Manusia" />
+                        android:text="Manfaat Hutan Bagi Keberlangsungan Hidup Manusia" />
 
                     <TextView
                         android:id="@+id/tvDesc"
@@ -140,13 +141,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvNama_artikel"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        tools:text="Restaurant Well,France" />
+                        android:text="Restaurant Well,France" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

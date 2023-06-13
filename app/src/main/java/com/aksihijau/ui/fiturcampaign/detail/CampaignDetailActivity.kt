@@ -29,6 +29,8 @@ import com.aksihijau.ui.user.login.LoginActivity
 import com.aksihijau.ui.webview.Makecampaign_webview_activity
 import com.aksihijau.ui.webview.Makereport_webview_activity
 import com.bumptech.glide.Glide
+import java.text.NumberFormat
+import java.util.Locale
 
 class CampaignDetailActivity : AppCompatActivity() {
 
@@ -42,6 +44,9 @@ class CampaignDetailActivity : AppCompatActivity() {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "token")
     private lateinit var originalList: List<Donation>
     private var donaturAdapter : ListDonaturAdapter? = null
+    val localeID = Locale("id", "ID")
+    val currencyFormat = NumberFormat.getCurrencyInstance(localeID)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCampaignDetailBinding.inflate(layoutInflater)
@@ -100,8 +105,12 @@ class CampaignDetailActivity : AppCompatActivity() {
                 .error(R.drawable.ic_error_image_24)
                 .into(binding.imageCompany)
             binding.titleDonasiDetail.text = data.title
-            binding.donasiCollect.text = data.collected.toString()
-            binding.targetDonasi.text = data.target.toString()
+            val donationCollectAmount = data.collected.toString()
+            val Collectamount = donationCollectAmount.toDouble()
+            binding.donasiCollect.text = currencyFormat.format(Collectamount)
+            val TargetAmount = data.target.toString()
+            val TargetDonation = TargetAmount.toDouble()
+            binding.targetDonasi.text = currencyFormat.format(TargetDonation)
             binding.tvDurationDonasi.text= data.remainingDays.toString()
             binding.desc.text = Html.fromHtml(data.description, Html.FROM_HTML_MODE_COMPACT)
             binding.companyName.text = data.fundraiser?.name

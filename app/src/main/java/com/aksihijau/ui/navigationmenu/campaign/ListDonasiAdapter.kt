@@ -14,6 +14,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.text.NumberFormat
+import java.util.Locale
 
 class ListDonasiAdapter(
     private val listDonasi : ArrayList<DataCampaign>,
@@ -22,6 +24,8 @@ class ListDonasiAdapter(
 
     private val originalList: ArrayList<DataCampaign> = ArrayList(listDonasi)
     private var isLimited = true
+    val localeID = Locale("id", "ID")
+    val currencyFormat = NumberFormat.getCurrencyInstance(localeID)
 
     inner class ListViewHolder(private val binding: ListDonationBinding) : RecyclerView.ViewHolder(binding.root){
         val imageDonasi : ImageView = itemView.findViewById(R.id.imageDonasi)
@@ -31,7 +35,9 @@ class ListDonasiAdapter(
 
         fun bind(dataCampaign: DataCampaign) {
             tvNameCampaign.text = dataCampaign.title
-            tvTarget.text = dataCampaign.target.toString()
+            val donationCollectAmount = dataCampaign.target.toString()
+            val Collectamount = donationCollectAmount.toDouble()
+            tvTarget.text = currencyFormat.format(Collectamount)
             tvSisaHari.text = dataCampaign.remainingDays.toString()
 
             val imageUrl = dataCampaign.image?.replace("storage.cloud.google.com", "storage.googleapis.com")

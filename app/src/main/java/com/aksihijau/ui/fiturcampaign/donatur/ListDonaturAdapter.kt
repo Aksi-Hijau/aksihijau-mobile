@@ -12,6 +12,8 @@ import com.aksihijau.databinding.ListDonationBinding
 import com.aksihijau.databinding.ListDonaturBinding
 import com.aksihijau.ui.navigationmenu.campaign.ListDonasiAdapter
 import com.bumptech.glide.Glide
+import java.text.NumberFormat
+import java.util.Locale
 
 class ListDonaturAdapter(
     private val listDonatur : ArrayList<Donation>
@@ -19,6 +21,8 @@ class ListDonaturAdapter(
 
     private val originalList: ArrayList<Donation> = ArrayList(listDonatur)
     private var isLimited = true
+    val localeID = Locale("id", "ID")
+    val currencyFormat = NumberFormat.getCurrencyInstance(localeID)
 
 
     inner class ListViewHolder(private val binding: ListDonaturBinding) : RecyclerView.ViewHolder(binding.root){
@@ -29,11 +33,15 @@ class ListDonaturAdapter(
 
         fun bind(donation: Donation) {
             tvNameDonatur.text = donation.name
-            tvDonasi.text = donation.amount.toString()
+            val DonationAmount = donation.amount.toString()
+            val Donation = DonationAmount.toDouble()
+            tvDonasi.text = currencyFormat.format(Donation)
             tvDonasiDate.text = donation.paidAt
 
+            val imageUrl = donation.image?.replace("storage.cloud.google.com", "storage.googleapis.com")
+
             Glide.with(binding.root)
-                .load(donation.image)
+                .load(imageUrl)
                 .error(R.drawable.ic_error_image_24) // Optional error image
                 .into(imageDonatur)
         }

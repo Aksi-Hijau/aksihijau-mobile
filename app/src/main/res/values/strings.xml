@@ -46,11 +46,11 @@
     <string name="Target_donation">Target</string>
     <string name="donation_collect">Rp 1.000.000</string>
     <string name="Duration">Sisa Hari</string>
-    <string name="duration_now">45 Hari</string>
+    <string name="duration_now"> Hari</string>
     <string name="search_donation">Cari Donasi</string>
 
     <!--  Campaign Detail  -->
-    <string name="donation_total">Terkumpul dari Rp 6.000.000</string>
+    <string name="donation_total">Terkumpul dari </string>
     <string name="title_company">Pengalang dana</string>
     <string name="dummy_company">Aksi Hijau</string>
     <string name="title_desc">Deskripsi</string>
