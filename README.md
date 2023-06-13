@@ -55,5 +55,3 @@ Jika Anda ingin berkontribusi pada proyek ini, Anda dapat melakukan fork reposit
 ## 📄 Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
-
-## 📄 Lisensi
