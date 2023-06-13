@@ -12,11 +12,14 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.aksihijau.R
 import com.aksihijau.databinding.ActivitySoilAnalysisBinding
 import com.aksihijau.ml.Soilmodel96
+import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
+import com.aksihijau.ui.webview.Makecampaign_webview_activity
 import okio.IOException
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.ImageProcessor
@@ -34,20 +37,14 @@ class SoilAnalysisActivity : AppCompatActivity() {
     private val imageSize = 224
 
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSIONS) {
-            if (!allPermissionsGranted()) {
-                Toast.makeText(
-                    this,
-                    getString(R.string.invalid_permission),
-                    Toast.LENGTH_SHORT
-                ).show()
-                finish()
+        if (requestCode == 100) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(cameraIntent, 3)
+            } else {
+                Toast.makeText(this, "Camera permission denied", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -57,6 +54,13 @@ class SoilAnalysisActivity : AppCompatActivity() {
         binding = ActivitySoilAnalysisBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar.root as Toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setTitle("Soil Analysis")
+        }
+        binding.toolbar.root.setTitleTextColor(resources.getColor(R.color.white))
 
         getPermission()
         onClick()
@@ -77,33 +81,51 @@ class SoilAnalysisActivity : AppCompatActivity() {
     }
 
     private fun onClick(){
-//        binding.btnCameraX.setOnClickListener { startCamera() }
+        binding.btnCameraX.setOnClickListener { startCamera() }
         binding.btnGallery.setOnClickListener { startGallery() }
-//        binding.btnCheck.setOnClickListener { predic() }
+        binding.btnCheck.setOnClickListener { checksoil() }
+        binding.btnMakecampaignbysoil.setOnClickListener { makecampaign() }
+    }
+
+    private fun makecampaign() {
+        val intent = Intent(this, Makecampaign_webview_activity::class.java)
+        startActivity(intent)
+    }
+
+    private fun startCamera() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(cameraIntent, 3)
+        } else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 100)
+        }
+    }
+
+
+
+    private fun checksoil() {
+        val resultText = binding.tvHasil.text.toString()
+        val id = when (resultText) {
+            "Regosol" -> 1
+            "Mediteran" -> 2
+            "Aluvial" -> 3
+            "Organosol" -> 4
+            "aluvial" -> 5
+            "Podsolit" -> 6
+            else -> -1
+        }
+
+        if (id != -1) {
+            val intent = Intent(this, SoilActivity::class.java)
+            intent.putExtra("soilId", id)
+            startActivity(intent)
+        }
     }
 
 
     private fun startGallery() {
-//        val intent = Intent()
-//        intent.action = Intent.ACTION_GET_CONTENT
-//        intent.type = "image/*"
-//        val chooser = Intent.createChooser(intent, "Choose a Picture")
-//        launcherIntentGallery.launch(chooser)
         val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(galleryIntent, 1)
-    }
-
-    private val launcherIntentGallery = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ){ result ->
-        if (result.resultCode == RESULT_OK) {
-            val selectedImg: Uri? = result.data?.data
-            selectedImg?.let {
-                val inputStream = contentResolver.openInputStream(selectedImg)
-                bitmap = BitmapFactory.decodeStream(inputStream)
-                binding.ivPreview.setImageBitmap(bitmap)
-            }
-        }
     }
 
     private fun classifyImage(image: Bitmap) {
@@ -175,41 +197,9 @@ class SoilAnalysisActivity : AppCompatActivity() {
         }
     }
 
-    private fun predic(){
-        var tensorImage = TensorImage(DataType.FLOAT32)
-        val classes = arrayOf("Aluvial", "Andosol", "Mediteran", "Organosol", "Podsolit", "Regosol")
-        var imageProcessor = ImageProcessor.Builder()
-//            .add(NormalizeOp(0.0f, 255.0f))
-//            .add(TransformToGrayscaleOp())
-            .add(ResizeOp(224, 224, ResizeOp.ResizeMethod.BILINEAR))
-            .build()
-        tensorImage.load(bitmap)
-
-        tensorImage = imageProcessor.process(tensorImage)
-
-        val model = Soilmodel96.newInstance(this)
-
-        // Creates inputs for reference.
-        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
-        inputFeature0.loadBuffer(tensorImage.buffer)
-
-        // Runs model inference and gets result.
-        val outputs = model.process(inputFeature0)
-        val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
-
-        var maxIdx = 0
-        outputFeature0.forEachIndexed{ index, fl->
-            if(outputFeature0[maxIdx] < fl){
-                maxIdx = index
-            }
-        }
-
-
-        binding.tvHasil.setText(classes[maxIdx])
-
-
-        // Releases model resources if no longer used.
-        model.close()
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     companion object {

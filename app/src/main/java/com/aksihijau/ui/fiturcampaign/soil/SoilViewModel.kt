@@ -48,6 +48,7 @@ class SoilViewModel : ViewModel() {
         })
     }
 
+
     private fun transformResponseToSoilDetails(soilResponse: SoilsResponse): Soil? {
         if (soilResponse?.success == true) {
             val SoilData = soilResponse.data

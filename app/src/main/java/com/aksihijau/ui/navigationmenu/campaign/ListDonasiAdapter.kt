@@ -41,7 +41,7 @@ class ListDonasiAdapter(
         return ListViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = if (isLimited) minOf(listDonasi.size, 3) else listDonasi.size
+    override fun getItemCount(): Int = if (isLimited) minOf(listDonasi.size, 2) else listDonasi.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listDonasi[position])

@@ -10,6 +10,7 @@ import com.aksihijau.R
 import com.aksihijau.databinding.ActivityHomeMakeCampaignBinding
 import com.aksihijau.databinding.ActivitySoilAnalysisBinding
 import com.aksihijau.ui.makecampaign.SoilAnalysis.SoilAnalysisActivity
+import com.aksihijau.ui.webview.Makecampaign_webview_activity
 
 class HomeMakeCampaignActivity : AppCompatActivity() {
 
@@ -37,6 +38,10 @@ class HomeMakeCampaignActivity : AppCompatActivity() {
     private fun onClick(){
         binding.btnCheck.setOnClickListener {
             val intent = Intent(this, SoilAnalysisActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnCampaign.setOnClickListener {
+            val intent = Intent(this, Makecampaign_webview_activity::class.java)
             startActivity(intent)
         }
     }
