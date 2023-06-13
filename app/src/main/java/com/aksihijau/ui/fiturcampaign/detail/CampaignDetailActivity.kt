@@ -26,6 +26,8 @@ import com.aksihijau.ui.fiturcampaign.newsletter.NewsListActivity
 import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.aksihijau.ui.payment.pilihnominalmetode.NominalMetodeActivity
 import com.aksihijau.ui.user.login.LoginActivity
+import com.aksihijau.ui.webview.Makecampaign_webview_activity
+import com.aksihijau.ui.webview.Makereport_webview_activity
 import com.bumptech.glide.Glide
 
 class CampaignDetailActivity : AppCompatActivity() {
@@ -148,8 +150,17 @@ class CampaignDetailActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+        binding.btKabarTerbaru.setOnClickListener {
+            val slug = campaignDetailViewModel.campaignDetails.value?.slug
+            slug?.let{
+                val intent = Intent(this, Makereport_webview_activity::class.java)
+                intent.putExtra(EXTRA_SLUG, it)
+                startActivity(intent)
+            }
+        }
         binding.backPress.setOnClickListener {
             onBackPressed()
         }
+
     }
 }
