@@ -1,5 +1,6 @@
 ## 👥 Aksi Hijau - Capstone Project Bangkit 2023
-Group = C23-PS329 \n
+Group = C23-PS329 
+
 Member =
 - (ML) M160DSX0257 –  Irfan Divi Zianka 
 - (ML) M282DSY0240 – Vina Maulida Junia 
