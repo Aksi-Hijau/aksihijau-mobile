@@ -2,6 +2,7 @@ package com.aksihijau.ui.fiturcampaign.newsletter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,6 +58,13 @@ class NewsListActivity : AppCompatActivity() {
         newsViewModel.reports.observe(this, { reports ->
             reports?.let {
                 newsAdapter.setData(it)
+
+                val noDataView = binding.noData.root
+                if (reports.isEmpty()) {
+                    noDataView.visibility = View.VISIBLE
+                } else {
+                    noDataView.visibility = View.GONE
+                }
             }
 
         })

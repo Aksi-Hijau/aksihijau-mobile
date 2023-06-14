@@ -21,18 +21,18 @@ class NewsViewModel : ViewModel() {
     private val _report = MutableLiveData<List<Report>>()
     val reports: LiveData<List<Report>> = _report
 
-    fun getNewsletter(slug : String){
+    fun getNewsletter(slug: String) {
         _isLoading.value = true
 
         val apiService = ApiConfig.getApiService()
         val ReportRequest = apiService.getReports(slug)
-        ReportRequest.enqueue(object : Callback<ReportResponse>{
+        ReportRequest.enqueue(object : Callback<ReportResponse> {
             override fun onResponse(
                 call: Call<ReportResponse>,
                 response: Response<ReportResponse>
             ) {
                 _isLoading.value = false
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     val reportResponse = response.body()?.data
                     reportResponse?.let { data ->
                         _report.value = data
@@ -48,5 +48,4 @@ class NewsViewModel : ViewModel() {
 
         })
     }
-
 }

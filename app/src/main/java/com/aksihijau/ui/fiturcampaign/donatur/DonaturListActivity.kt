@@ -59,6 +59,13 @@ class DonaturListActivity : AppCompatActivity() {
                 donaturAdapter.setLimited(false)
                 donaturAdapter.setData(it)
 
+                val noDataView = binding.noData.root
+                if (donaturs.isEmpty()) {
+                    noDataView.visibility = View.VISIBLE
+                } else {
+                    noDataView.visibility = View.GONE
+                }
+
             }
 
         })
