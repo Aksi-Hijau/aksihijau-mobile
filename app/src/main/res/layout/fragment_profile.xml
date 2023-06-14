@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Silakan Login untuk mendapatkan fitur riwayat donasi"
+        android:text="Silakan Login untuk mendapatkan fitur menarik dari aplikasi"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/imageCompany"/>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_makecampaign"
+        android:id="@+id/cv_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -91,7 +91,7 @@
         android:id="@+id/cv_datapribadi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cv_makecampaign"
+        app:layout_constraintTop_toBottomOf="@id/cv_admin"
         android:layout_marginTop="40dp"
         android:padding="5dp">
 

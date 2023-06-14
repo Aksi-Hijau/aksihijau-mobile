@@ -2,7 +2,9 @@ package com.aksihijau.ui.navigationmenu.profile
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.aksihijau.R
 import com.aksihijau.databinding.FragmentProfileBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
@@ -21,6 +24,8 @@ import com.aksihijau.ui.fiturcampaign.mycampaigns.MyCampaignsActivity
 import com.aksihijau.ui.user.login.LoginActivity
 import com.aksihijau.ui.view.SplashScreen
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
 
 class ProfileFragment : Fragment() {
 
@@ -62,7 +67,7 @@ class ProfileFragment : Fragment() {
 
                 binding.imageCompany.visibility =       View.GONE
                 binding.tvNamaProfile.visibility =      View.GONE
-                binding.cvMakecampaign.visibility =     View.GONE
+                binding.cvAdmin.visibility =     View.GONE
                 binding.cvDatapribadi.visibility =      View.GONE
                 binding.cvLogoutProfile.visibility =    View.GONE
                 binding.cvKampanyasaya.visibility =     View.GONE
@@ -73,7 +78,7 @@ class ProfileFragment : Fragment() {
 
                 binding.imageCompany.visibility =       View.VISIBLE
                 binding.tvNamaProfile.visibility =      View.VISIBLE
-                binding.cvMakecampaign.visibility =     View.VISIBLE
+                binding.cvAdmin.visibility =     View.VISIBLE
                 binding.cvDatapribadi.visibility =      View.VISIBLE
                 binding.cvLogoutProfile.visibility =    View.VISIBLE
                 binding.cvKampanyasaya.visibility =     View.VISIBLE
@@ -87,18 +92,32 @@ class ProfileFragment : Fragment() {
                 setupView()
                 profileViewModel.user.observe(viewLifecycleOwner){
                     Log.d("Profie Fragment", "onCreateView: $it")
-                    Glide.with(binding.imageCompany).load(it!!.photo).into(binding.imageCompany)
+
+                    val imageUrl = it!!.photo.toString().replace("storage.cloud.google.com", "storage.googleapis.com")
+
+                    Glide.with(binding.root).load(imageUrl).apply(
+                        RequestOptions().format(DecodeFormat.PREFER_RGB_565)) .error(R.drawable.aksihijau_logo).into(binding.imageCompany)
                     binding.tvNamaProfile.text = it.name
                     if(it.role == "user"){
-                        binding.cvMakecampaign.visibility = View.GONE
+                        binding.cvAdmin.visibility = View.GONE
+                    }
+                    binding.cvDatapribadi.setOnClickListener {view->
+                        val intent = Intent(requireContext(), UpdateUserActivity::class.java)
+
+                        intent.putExtra(UpdateUserActivity.EXTRA_NAME, it.name)
+                        intent.putExtra(UpdateUserActivity.EXTRA_EMAIL, it.email)
+                        startActivity(intent)
                     }
                 }
             }
         }
 
-        binding.cvMakecampaign.setOnClickListener {
-            openSoilAnalysisActivity()
+        binding.cvAdmin.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://aksihijau-admin.vercel.app"))
+            startActivity(browserIntent)
         }
+
+
         return root
     }
 
@@ -108,6 +127,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupView(){
+
         binding.cvLogoutProfile.setOnClickListener{
             tokenViewModel.saveLoginSetting(false)
             tokenViewModel.saveToken("")
@@ -133,4 +153,6 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

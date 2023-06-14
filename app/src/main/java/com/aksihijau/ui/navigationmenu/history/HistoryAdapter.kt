@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.aksihijau.R
 import com.aksihijau.api.DataItemDonationHistories
 import com.aksihijau.databinding.HistoryItemBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.request.RequestOptions
 
 class HistoryAdapter(private val history : List<DataItemDonationHistories>) : RecyclerView.Adapter<HistoryAdapter.ListViewHolder>(){
 
@@ -36,7 +39,14 @@ class HistoryAdapter(private val history : List<DataItemDonationHistories>) : Re
         val photo = history[position].campaignImage
         holder.tvName.text = name
         holder.tvDesc.text = "Rp " + amount
-        Glide.with(holder.photo).load(photo).into(holder.photo)
+
+        val imageUrl = photo.replace("storage.cloud.google.com", "storage.googleapis.com")
+
+        Glide.with(holder.photo)
+            .load(imageUrl)
+            .apply(RequestOptions().format(DecodeFormat.PREFER_RGB_565))
+            .error(R.drawable.ic_error_image_24) // Optional error image
+            .into(holder.photo)
         holder.itemView.setOnClickListener{
             if (name != null) {
                 onItemClickCallback.onItemClicked(history[position])

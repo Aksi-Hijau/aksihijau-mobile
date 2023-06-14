@@ -6,7 +6,9 @@ import com.aksihijau.api.campaignresponse.DonaturResponse
 import com.aksihijau.api.campaignresponse.MyCampaignsResponse
 import com.aksihijau.api.campaignresponse.ReportResponse
 import com.aksihijau.api.campaignresponse.SoilsResponse
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -15,7 +17,10 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
@@ -106,6 +111,24 @@ interface ApiService {
         @Header("x-refresh") refreshToken: String,
     ): Call<MyCampaignsResponse>
 
+    @Multipart
+    @PUT("user")
+    fun updateProfile(
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+        @Part file: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("birthDate") birthDate: RequestBody
+        ): Call<UserResponse>
+
+
+    @GET("campaigns/{slug}")
+    fun getMyCampaignDetails(
+        @Path("slug") slug: String,
+        @Header("Authorization") token : String,
+        @Header("x-refresh") refreshToken: String,
+    ): Call<CampaignDetailsResponse>
 }
 
 class ApiConfig {

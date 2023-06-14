@@ -50,6 +50,9 @@ class HistoryFragment : Fragment() {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.startDate.visibility = View.GONE
+        binding.endDate.visibility = View.GONE
+
         tokenViewModel.getLoginSettings().observe(viewLifecycleOwner){
             if(!it){
                 binding.btLogin.visibility = View.VISIBLE

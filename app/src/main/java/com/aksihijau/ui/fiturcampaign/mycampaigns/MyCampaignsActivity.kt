@@ -39,6 +39,10 @@ class MyCampaignsActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        binding.materialToolbar5.setNavigationOnClickListener {
+            finish()
+        }
+
         campaignAdapter = ListDonasiAdapter(arrayListOf()){ campaign ->
             val intent = Intent(this, CampaignDetailActivity::class.java)
             intent.putExtra(CampaignDetailActivity.EXTRA_SLUG, campaign.slug)

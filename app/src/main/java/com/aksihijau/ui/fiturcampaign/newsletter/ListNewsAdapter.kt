@@ -58,9 +58,11 @@ class ListNewsAdapter(
             }
         }
 
-        fun bind(report: Report) {
+
+        fun bind(report: Report){
+        val imageUrl = report.cratorImage!!.replace("storage.cloud.google.com", "storage.googleapis.com")
             Glide.with(binding.root)
-                .load(report.cratorImage)
+                .load(imageUrl)
                 .error(R.drawable.ic_error_image_24)
                 .into(imageCreator)
             tvNameCreator.text = report.cratorName
@@ -84,7 +86,10 @@ class ListNewsAdapter(
             val targetFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.getDefault())
             val formattedDateString = targetFormat.format(date)
             tvdatenews.text = formattedDateString
+
         }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {

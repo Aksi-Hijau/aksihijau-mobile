@@ -55,6 +55,34 @@ class CampaignDetailViewModel(private val context: Context) : ViewModel() {
         })
     }
 
+    fun getMyCampaignDetails(slug: String, token: String, refreshToken: String) {
+        _isLoading.value = true
+
+        val apiService = ApiConfig.getApiService()
+        val campaignDetailsRequest = apiService.getMyCampaignDetails(slug, token, refreshToken)
+        campaignDetailsRequest.enqueue(object : Callback<CampaignDetailsResponse> {
+            override fun onResponse(
+                call: Call<CampaignDetailsResponse>,
+                response: Response<CampaignDetailsResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    val campaignDetailsResponse = response.body()
+                    val campaignDetails = transformResponseToCampaignDetails(campaignDetailsResponse)
+                    _campaignDetails.value = campaignDetails
+                    _isSuccess.value = true
+                } else {
+                    _isSuccess.value = false
+                }
+            }
+
+            override fun onFailure(call: Call<CampaignDetailsResponse>, t: Throwable) {
+                _isLoading.value = false
+                _isSuccess.value = false
+            }
+        })
+    }
+
     private fun transformResponseToCampaignDetails(response: CampaignDetailsResponse?): CampaignDetailsData? {
         if (response?.success == true) {
             val campaignData = response.data
@@ -69,6 +97,7 @@ class CampaignDetailViewModel(private val context: Context) : ViewModel() {
                 campaignData?.image,
                 campaignData?.target,
                 campaignData?.deadline,
+                campaignData?.isMine,
                 campaignData?.description,
                 campaignData?.updatedAt,
                 campaignData?.createdAt,

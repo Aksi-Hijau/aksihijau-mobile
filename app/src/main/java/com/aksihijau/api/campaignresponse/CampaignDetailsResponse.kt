@@ -35,6 +35,9 @@ data class CampaignDetailsData(
     @SerializedName("deadline")
     val deadline: String? = null,
 
+    @SerializedName("isMine")
+    val isMine: Boolean? = null,
+
     @SerializedName("description")
     val description: String? = null,
 

@@ -191,7 +191,7 @@ class NominalMetodeActivity : AppCompatActivity() {
 
         binding.btnLanjutPembyaran.setOnClickListener {
 
-            if(banyakDonasi <= 10000){
+            if(banyakDonasi < 10000){
                 Toast.makeText(this, "Donasi Minimal Rp 10000", Toast.LENGTH_SHORT).show()
             } else if (!this::_payment.isInitialized){
                 Toast.makeText(this, "Pilih Metode Pembayaran", Toast.LENGTH_SHORT).show()

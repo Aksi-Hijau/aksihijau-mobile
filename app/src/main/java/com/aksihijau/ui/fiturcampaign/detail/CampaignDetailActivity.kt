@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
+import android.view.View
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -62,10 +63,26 @@ class CampaignDetailActivity : AppCompatActivity() {
         val pref = TokenPreferences.getInstance(dataStore)
         tokenViewModel = ViewModelProvider(this, TokenViewModelFactory(pref))[TokenViewModel::class.java]
 
-        slug?.let {
-            campaignDetailViewModel.getCampaignDetails(it)
-            campaignDetailViewModel.getDonatur_CampaignDetail(it)
+
+        tokenViewModel.getLoginSettings().observe(this){
+            if(it){
+                tokenViewModel.getToken().observe(this){token->
+                    tokenViewModel.getRefreshToken().observe(this){ refreshToken ->
+                        slug?.let {slug->
+                            campaignDetailViewModel.getMyCampaignDetails(slug, token, refreshToken)
+                            campaignDetailViewModel.getDonatur_CampaignDetail(slug)
+                        }
+                    }
+                }
+            } else {
+                slug?.let {
+                    campaignDetailViewModel.getCampaignDetails(it)
+                    campaignDetailViewModel.getDonatur_CampaignDetail(it)
+                }
+            }
         }
+
+
 
         campaignDetailViewModel.isLoading.observe(this, { isLoading ->
             // Handle loading state here
@@ -83,7 +100,6 @@ class CampaignDetailActivity : AppCompatActivity() {
             originalList = donaturs
             donaturAdapter?.setData(originalList)
             donaturAdapter?.setLimited(true)
-
         })
 
 
@@ -100,10 +116,20 @@ class CampaignDetailActivity : AppCompatActivity() {
                 .load(imageUrl)
                 .error(R.drawable.ic_error_image_24)
                 .into(binding.ivHeaderDetail)
-            Glide.with(binding.root)
-                .load(data.fundraiser?.photo)
-                .error(R.drawable.ic_error_image_24)
-                .into(binding.imageCompany)
+
+            try {
+                val foto = data.fundraiser?.photo!!.replace("storage.cloud.google.com", "storage.googleapis.com")
+                Glide.with(binding.root)
+                    .load(foto)
+                    .error(R.drawable.ic_error_image_24)
+                    .into(binding.imageCompany)
+
+            }catch (e:Exception){
+                Glide.with(binding.root)
+                    .load(data.fundraiser!!.photo)
+                    .error(R.drawable.ic_error_image_24)
+                    .into(binding.imageCompany)
+            }
             binding.titleDonasiDetail.text = data.title
             val donationCollectAmount = data.collected.toString()
             val Collectamount = donationCollectAmount.toDouble()
@@ -115,6 +141,10 @@ class CampaignDetailActivity : AppCompatActivity() {
             binding.desc.text = Html.fromHtml(data.description, Html.FROM_HTML_MODE_COMPACT)
             binding.companyName.text = data.fundraiser?.name
             binding.jenisTanah.text = data.soil?.type
+
+            if(data.isMine == false){
+                binding.btKabarTerbaru.visibility = View.GONE
+            }
         }
     }
 
@@ -170,6 +200,5 @@ class CampaignDetailActivity : AppCompatActivity() {
         binding.backPress.setOnClickListener {
             onBackPressed()
         }
-
     }
 }
