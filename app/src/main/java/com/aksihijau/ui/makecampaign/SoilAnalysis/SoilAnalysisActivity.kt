@@ -110,8 +110,8 @@ class SoilAnalysisActivity : AppCompatActivity() {
             "Mediteran" -> 2
             "Aluvial" -> 3
             "Organosol" -> 4
-            "aluvial" -> 5
-            "Podsolit" -> 6
+            "Podsolit" -> 5
+            "Andosol" -> 6
             else -> -1
         }
 

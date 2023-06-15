@@ -33,34 +33,8 @@ class ListNewsAdapter(
         private val body_news: TextView = itemView.findViewById(R.id.body_news)
         private val tvdatenews: TextView = itemView.findViewById(R.id.tv_date_news)
 
-        private val mainHandler = Handler(Looper.getMainLooper())
-
-        private inner class ImageGetterImpl(private val html: String) : Html.ImageGetter {
-            override fun getDrawable(source: String): Drawable {
-                val futureTarget = Glide.with(itemView.context.applicationContext)
-                    .asDrawable()
-                    .load(source)
-                    .submit()
-
-                val width = body_news.width - body_news.paddingLeft - body_news.paddingRight
-                val height = width * futureTarget.get().intrinsicHeight / futureTarget.get().intrinsicWidth
-
-                val drawable = futureTarget.get()
-                drawable.setBounds(0, 0, width, height)
-
-                mainHandler.post {
-                    body_news.invalidate()
-                    val spannable = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY, this@ImageGetterImpl, null)
-                    body_news.text = spannable
-                }
-
-                return drawable
-            }
-        }
-
-
-        fun bind(report: Report){
-        val imageUrl = report.cratorImage!!.replace("storage.cloud.google.com", "storage.googleapis.com")
+        fun bind(report: Report) {
+            val imageUrl = report.cratorImage!!.replace("storage.cloud.google.com", "storage.googleapis.com")
             Glide.with(binding.root)
                 .load(imageUrl)
                 .error(R.drawable.ic_error_image_24)
@@ -69,7 +43,17 @@ class ListNewsAdapter(
             tvtitlenews.text = report.title
             val html = report.body
 
-            val imageGetter = html?.let { ImageGetterImpl(it) }
+            val imageGetter = Html.ImageGetter { source ->
+                val futureTarget = Glide.with(itemView.context.applicationContext)
+                    .asDrawable()
+                    .load(source)
+                    .submit()
+
+                val drawable = futureTarget.get()
+                drawable.setBounds(0, 0, drawable.intrinsicWidth, drawable.intrinsicHeight)
+
+                drawable
+            }
 
             CoroutineScope(Dispatchers.IO).launch {
                 val spannable = withContext(Dispatchers.IO) {
@@ -86,7 +70,6 @@ class ListNewsAdapter(
             val targetFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.getDefault())
             val formattedDateString = targetFormat.format(date)
             tvdatenews.text = formattedDateString
-
         }
 
 
