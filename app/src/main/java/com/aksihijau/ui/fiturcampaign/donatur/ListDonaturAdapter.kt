@@ -6,11 +6,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aksihijau.R
-import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.api.campaignresponse.Donation
-import com.aksihijau.databinding.ListDonationBinding
 import com.aksihijau.databinding.ListDonaturBinding
-import com.aksihijau.ui.navigationmenu.campaign.ListDonasiAdapter
 import com.bumptech.glide.Glide
 import java.text.NumberFormat
 import java.util.Locale

@@ -3,28 +3,22 @@ package com.aksihijau.ui.navigationmenu.history
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-import android.widget.TextView
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aksihijau.R
 import com.aksihijau.api.DataItemDonationHistories
 import com.aksihijau.databinding.FragmentHistoryBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
 import com.aksihijau.datastore.TokenViewModelFactory
-import com.aksihijau.ui.navigationmenu.BottomNavigationActivity
 import com.aksihijau.ui.user.login.LoginActivity
-import com.aksihijau.ui.view.SplashScreen
 
 class HistoryFragment : Fragment() {
 

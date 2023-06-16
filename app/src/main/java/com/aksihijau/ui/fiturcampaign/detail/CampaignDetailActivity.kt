@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.CampaignDetailsData
-import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.api.campaignresponse.Donation
 import com.aksihijau.databinding.ActivityCampaignDetailBinding
 import com.aksihijau.datastore.TokenPreferences
@@ -27,7 +25,6 @@ import com.aksihijau.ui.fiturcampaign.newsletter.NewsListActivity
 import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.aksihijau.ui.payment.pilihnominalmetode.NominalMetodeActivity
 import com.aksihijau.ui.user.login.LoginActivity
-import com.aksihijau.ui.webview.Makecampaign_webview_activity
 import com.aksihijau.ui.webview.Makereport_webview_activity
 import com.bumptech.glide.Glide
 import java.text.NumberFormat
@@ -163,7 +160,7 @@ class CampaignDetailActivity : AppCompatActivity() {
             tokenViewModel.getLoginSettings().observe(this){
                 if(it){
                     val slug = campaignDetailViewModel.campaignDetails.value!!.slug
-                    val intent: Intent = Intent(this, NominalMetodeActivity::class.java)
+                    val intent = Intent(this, NominalMetodeActivity::class.java)
                     intent.putExtra(NominalMetodeActivity.EXTRA_SLUG, slug)
                     startActivity(intent)
                 }else {

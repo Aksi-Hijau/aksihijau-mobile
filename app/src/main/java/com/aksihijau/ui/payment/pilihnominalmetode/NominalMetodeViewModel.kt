@@ -1,12 +1,8 @@
 package com.aksihijau.ui.payment.pilihnominalmetode
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aksihijau.api.ApiConfig
-import com.aksihijau.api.CreateDonationResponse
-import com.aksihijau.api.LoginResponse
 import com.aksihijau.api.PaymentsResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +20,7 @@ class NominalMetodeViewModel : ViewModel() {
                 response: Response<PaymentsResponse>
             ) {
                 if(response.isSuccessful){
-                    var payment = ArrayList<Payment>()
+                    val payment = ArrayList<Payment>()
                     val bank = response.body()!!.data!!.bank
                     val ewallet = response.body()!!.data!!.ewallet
 

@@ -3,8 +3,6 @@ package com.aksihijau.ui.fiturcampaign.donatur
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +20,7 @@ class DonaturListActivity : AppCompatActivity() {
         binding = ActivityDonationListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar.root as Toolbar)
+        setSupportActionBar(binding.toolbar.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)

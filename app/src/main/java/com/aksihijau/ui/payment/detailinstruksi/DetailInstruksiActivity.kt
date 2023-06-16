@@ -3,14 +3,11 @@ package com.aksihijau.ui.payment.detailinstruksi
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aksihijau.R
 import com.aksihijau.api.InstructionsItem
 import com.aksihijau.databinding.ActivityDetailInstruksiBinding
 import com.aksihijau.datastore.TokenPreferences

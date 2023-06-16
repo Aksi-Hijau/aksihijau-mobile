@@ -3,11 +3,8 @@ package com.aksihijau.ui.payment.instruksipembyaran
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aksihijau.api.ApiConfig
-import com.aksihijau.api.ApiService
-import com.aksihijau.api.Bank
 import com.aksihijau.api.CreateDonationResponse
 import com.aksihijau.api.DataCreateDonation
-import com.aksihijau.api.Ewallet
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

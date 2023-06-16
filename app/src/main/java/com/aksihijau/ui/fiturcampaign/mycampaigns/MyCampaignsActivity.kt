@@ -4,19 +4,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aksihijau.R
 import com.aksihijau.databinding.ActivityMyCampaignsBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
 import com.aksihijau.datastore.TokenViewModelFactory
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailActivity
-import com.aksihijau.ui.fiturcampaign.soil.SoilActivity
 import com.aksihijau.ui.makecampaign.HomeMakeCampaignActivity
 import com.aksihijau.ui.navigationmenu.campaign.ListDonasiAdapter
 

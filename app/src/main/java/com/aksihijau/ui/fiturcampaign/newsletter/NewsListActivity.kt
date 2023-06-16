@@ -3,14 +3,12 @@ package com.aksihijau.ui.fiturcampaign.newsletter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aksihijau.R
 import com.aksihijau.databinding.ActivityNewsListBinding
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailActivity
-import com.aksihijau.ui.fiturcampaign.donatur.ListDonaturAdapter
 
 class NewsListActivity : AppCompatActivity() {
 
@@ -23,7 +21,7 @@ class NewsListActivity : AppCompatActivity() {
         binding = ActivityNewsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar.root as Toolbar)
+        setSupportActionBar(binding.toolbar.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -45,9 +43,9 @@ class NewsListActivity : AppCompatActivity() {
 
         newsViewModel.isLoading.observe(this, { isLoading ->
             if (isLoading) {
-                binding.progressBar.visibility = android.view.View.VISIBLE
+                binding.progressBar.visibility = View.VISIBLE
             } else {
-                binding.progressBar.visibility = android.view.View.GONE
+                binding.progressBar.visibility = View.GONE
             }
         })
 

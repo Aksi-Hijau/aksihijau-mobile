@@ -10,13 +10,11 @@ import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.appcompat.widget.Toolbar
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.R
-import com.aksihijau.databinding.ActivityMakecampaignWebviewBinding
 import com.aksihijau.databinding.ActivityMakereportWebviewBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
@@ -35,7 +33,7 @@ class Makereport_webview_activity : AppCompatActivity() {
         binding = ActivityMakereportWebviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar.root as Toolbar)
+        setSupportActionBar(binding.toolbar.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)

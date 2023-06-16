@@ -3,8 +3,6 @@ package com.aksihijau.ui.fiturcampaign.soil
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.aksihijau.R
 import com.aksihijau.databinding.ActivitySoilBinding
@@ -20,7 +18,7 @@ class SoilActivity : AppCompatActivity() {
         binding = ActivitySoilBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar.root as Toolbar)
+        setSupportActionBar(binding.toolbar.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -35,7 +33,7 @@ class SoilActivity : AppCompatActivity() {
         soilViewModel = ViewModelProvider(this).get(SoilViewModel::class.java)
         soilViewModel.getSoilDetails(soilId)
 
-        soilViewModel.soilDetails.observe(this, Observer { soil ->
+        soilViewModel.soilDetails.observe(this, { soil ->
             soil?.let {
                 binding.jenisTanah.text = it.type
                 binding.bodySoil.text = Html.fromHtml(it.body, Html.FROM_HTML_MODE_COMPACT)

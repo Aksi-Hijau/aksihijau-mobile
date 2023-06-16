@@ -1,29 +1,21 @@
 package com.aksihijau.ui.payment.pilihnominalmetode
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.aksihijau.R
 import com.aksihijau.databinding.ActivityNominalMetodeBinding
 import com.aksihijau.databinding.DialogPilihMetodeBinding
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailActivity
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailFactory
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailViewModel
-import com.aksihijau.ui.navigationmenu.history.History
-import com.aksihijau.ui.navigationmenu.history.HistoryAdapter
-import com.aksihijau.ui.navigationmenu.history.HistoryDetailActivity
 import com.aksihijau.ui.payment.instruksipembyaran.InstruksiPembayaranActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.color.utilities.MaterialDynamicColors.background
-import kotlin.properties.Delegates
 
 class NominalMetodeActivity : AppCompatActivity() {
 

@@ -12,10 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.aksihijau.api.campaignresponse.DataCampaign
 import com.aksihijau.databinding.FragmentCampaignBinding
 import com.aksihijau.ui.fiturcampaign.detail.CampaignDetailActivity
-import okhttp3.internal.notifyAll
 
 class CampaignFragment : Fragment() {
 

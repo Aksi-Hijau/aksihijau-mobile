@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aksihijau.api.ApiConfig
-import com.aksihijau.api.campaignresponse.CampaignDetailsData
 import com.aksihijau.api.campaignresponse.Soil
 import com.aksihijau.api.campaignresponse.SoilsResponse
 import retrofit2.Call
@@ -50,7 +49,7 @@ class SoilViewModel : ViewModel() {
 
 
     private fun transformResponseToSoilDetails(soilResponse: SoilsResponse): Soil? {
-        if (soilResponse?.success == true) {
+        if (soilResponse.success == true) {
             val SoilData = soilResponse.data
 
 

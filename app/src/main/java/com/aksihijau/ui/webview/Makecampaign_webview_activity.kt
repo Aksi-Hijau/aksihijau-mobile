@@ -12,11 +12,9 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.widget.Toolbar
 import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.aksihijau.R
 import com.aksihijau.databinding.ActivityMakecampaignWebviewBinding
 import com.aksihijau.datastore.TokenPreferences

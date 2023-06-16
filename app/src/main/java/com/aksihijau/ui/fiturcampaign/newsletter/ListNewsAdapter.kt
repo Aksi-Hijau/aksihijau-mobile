@@ -1,8 +1,5 @@
 package com.aksihijau.ui.fiturcampaign.newsletter
 
-import android.graphics.drawable.Drawable
-import android.os.Handler
-import android.os.Looper
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +10,6 @@ import com.aksihijau.R
 import com.aksihijau.api.campaignresponse.Report
 import com.aksihijau.databinding.ListNewsBinding
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,9 +62,9 @@ class ListNewsAdapter(
 
             val originalDateString = report.createdAt
             val originalFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-            val date = originalFormat.parse(originalDateString)
+            val date = originalFormat.parse(originalDateString!!)
             val targetFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.getDefault())
-            val formattedDateString = targetFormat.format(date)
+            val formattedDateString = targetFormat.format(date!!)
             tvdatenews.text = formattedDateString
         }
 

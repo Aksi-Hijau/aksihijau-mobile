@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aksihijau.api.ApiConfig
 import com.aksihijau.api.campaignresponse.DataCampaign
-import com.aksihijau.api.campaignresponse.DataMyCampaigns
 import com.aksihijau.api.campaignresponse.MyCampaignsResponse
 import retrofit2.Call
 import retrofit2.Callback

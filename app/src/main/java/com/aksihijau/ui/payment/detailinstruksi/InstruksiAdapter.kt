@@ -5,15 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aksihijau.R
-import com.aksihijau.api.DataDetailInstruksi
 import com.aksihijau.api.InstructionsItem
 import com.aksihijau.databinding.ItemExpandableInstruksiBinding
-import com.aksihijau.databinding.PaymentItemBinding
-import com.bumptech.glide.Glide
 
 class InstruksiAdapter(private val instruksi : List<InstructionsItem>) : RecyclerView.Adapter<InstruksiAdapter.ListViewHolder>(){
 

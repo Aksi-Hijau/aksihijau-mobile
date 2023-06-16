@@ -2,7 +2,6 @@ package com.aksihijau.ui.payment.instruksipembyaran
 
 import android.content.Context
 import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +12,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.aksihijau.R
 import com.aksihijau.databinding.ActivityInstruksiPembayaranBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
@@ -22,7 +20,6 @@ import com.aksihijau.ui.navigationmenu.history.HistoryDetailActivity
 import com.aksihijau.ui.payment.detailinstruksi.DetailInstruksiActivity
 import com.aksihijau.ui.payment.pilihnominalmetode.Payment
 import com.bumptech.glide.Glide
-import okhttp3.internal.notify
 
 class InstruksiPembayaranActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInstruksiPembayaranBinding

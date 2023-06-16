@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +18,6 @@ import com.aksihijau.databinding.FragmentProfileBinding
 import com.aksihijau.datastore.TokenPreferences
 import com.aksihijau.datastore.TokenViewModel
 import com.aksihijau.datastore.TokenViewModelFactory
-import com.aksihijau.ui.makecampaign.HomeMakeCampaignActivity
 import com.aksihijau.ui.fiturcampaign.mycampaigns.MyCampaignsActivity
 import com.aksihijau.ui.user.login.LoginActivity
 import com.aksihijau.ui.view.SplashScreen
@@ -121,10 +119,6 @@ class ProfileFragment : Fragment() {
         return root
     }
 
-    private fun openSoilAnalysisActivity() {
-        val intent = Intent(requireContext(), HomeMakeCampaignActivity::class.java)
-        startActivity(intent)
-    }
 
     private fun setupView(){
 

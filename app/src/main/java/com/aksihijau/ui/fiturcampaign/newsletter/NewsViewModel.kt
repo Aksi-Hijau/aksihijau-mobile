@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aksihijau.api.ApiConfig
-import com.aksihijau.api.campaignresponse.Donation
 import com.aksihijau.api.campaignresponse.Report
 import com.aksihijau.api.campaignresponse.ReportResponse
 import retrofit2.Call
